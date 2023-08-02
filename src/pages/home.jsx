@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Card, Col, Row, Typography } from 'antd'
-import { LockOutlined, LinkOutlined, SearchOutlined } from '@ant-design/icons'
+import { LockOutlined, LinkOutlined, MoneyCollectOutlined } from '@ant-design/icons'
 import '../styling/home.css'
 
 function Home() {
@@ -17,6 +17,12 @@ function Home() {
           label: 'Short URL',
           desc: 'Shortens your URL',
           image: <LinkOutlined />
+        },
+        {
+          link: '/currency',
+          label: 'Currency Converter',
+          desc: 'Check the exchange rate',
+          image: <MoneyCollectOutlined />
         },
       ]
 
