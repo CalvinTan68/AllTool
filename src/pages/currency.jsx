@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import '../styling/currency.css';
-import { Button, Input, Typography, Spin, Select } from 'antd';
-import { HomeOutlined } from '@ant-design/icons';
+import { Button, InputNumber, Typography, Spin, Select, Row, Col } from 'antd';
+import { HomeOutlined, SwapOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -9,6 +9,9 @@ import axios from 'axios';
 function Currency() {
   const [baseCurrency, setBaseCurrency] = useState('IDR')
   const [baseValue, setBaseValue] = useState('1')
+
+  const [newCurrency, setNewCurrency] = useState('')
+  const [newValue, setNewValue] = useState('')
   
   const API = import.meta.env.VITE_EXCHANGE_RATE_URL;
   const currencyCode = [
@@ -185,18 +188,19 @@ function Currency() {
   ]
 
   function sendApi() {
-    axios.post(API + '/' + baseCurrency)
+    axios.get(API + '/' + baseCurrency)
       .then((response) => {
-
+        const data = response.data?.conversion_rates;
       })
       .catch((error) => {
         console.error('Error fetching API/URL');
       });
   }
-  // function handleInputChange(event) {
-  //   setUrl(event.target.value);
-  // }
 
+  const onChange = (value) => {
+    console.log('changed', value);
+  };
+  
   return (
     <>
       <Link to='/'>
@@ -215,25 +219,33 @@ function Currency() {
           Shorten URL
         </Button>
 
+        <InputNumber
+      defaultValue={1000}
+      formatter={(value) => `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
+      parser={(value) => value.replace(/\$\s?|(,*)/g, '')}
+      onChange={onChange}
+    />
+
         <Select
           showSearch
           placeholder="Select currency"
         >
           {currencyCode.map((currency) => (
-            <Option key={currency.key} value={currency.value}>
+            <Select.Option key={currency.value} value={currency.value}>
               {currency.value} - {currency.label}
-            </Option>
+            </Select.Option>
           ))}
         </Select>
-
-        {/* {showURL &&
-        <>
-        <Typography.Text>Your short URL is: </Typography.Text>
-        <Button size='large' className='shorted' type='primary' onClick={copyPassword}>
-          {loading ? <Spin /> : short}
-        </Button>
-        </>
-        } */}
+        <Select
+          showSearch
+          placeholder="Select currency"
+        >
+          {currencyCode.map((currency) => (
+            <Select.Option key={currency.value} value={currency.value}>
+              {currency.value} - {currency.label}
+            </Select.Option>
+          ))}
+        </Select>
       </div>
     </>
   );

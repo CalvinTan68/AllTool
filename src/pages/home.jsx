@@ -18,12 +18,12 @@ function Home() {
           desc: 'Shortens your URL',
           image: <LinkOutlined />
         },
-        {
-          link: '/currency',
-          label: 'Currency Converter',
-          desc: 'Check the exchange rate',
-          image: <MoneyCollectOutlined />
-        },
+        // {
+        //   link: '/currency',
+        //   label: 'Currency Converter',
+        //   desc: 'Check the exchange rate',
+        //   image: <MoneyCollectOutlined />
+        // },
       ]
 
     return (

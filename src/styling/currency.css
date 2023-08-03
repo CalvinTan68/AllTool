@@ -30,7 +30,7 @@
   text-align: center !important;
 }
 ::placeholder {
-  color: grey !important;
+  color: black !important;
   opacity: 1 !important;
 }
 :-ms-input-placeholder {
@@ -57,13 +57,12 @@
   border: solid 1px #1677ff;
 }
 
-
 input[type=search] {
   color: black !important
 }
-.ant-select-selection-placeholder {
+.ant-select-selection-placeholder, span.ant-select-selection-item, .ant-select-item-option-content {
   color: black !important
 }
-.ant-select-item-option-content {
-  color: black !important;
+.anticon-swap {
+  font-size: 25px !important;
 }
