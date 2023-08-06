@@ -1,0 +1,29 @@
+.centerized {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.back {
+    position: absolute !important;
+    left: 20px !important;
+    top: 20px !important;
+    border-radius: 100px !important;
+}
+.main-action {
+    border-radius: 100px !important;
+    margin: 8px 0px !important;
+}
+.home {
+    padding: 5% !important;
+}
+.network-data th.ant-descriptions-item {
+    padding: 0 !important;
+}
+
+.ant-card-head-title, .ant-card-body h2, .ant-card-body h5 {
+    text-align: center !important;
+}
+.ant-card-head-title h4, .ant-card-head-title article, .ant-card-body h2, .ant-card-body h5 {
+    margin: 0px !important;
+}

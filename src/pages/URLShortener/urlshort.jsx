@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import '../styling/urlshort.css';
-import { Button, Input, Typography, Spin } from 'antd';
+import { Button, Card, Input, Image, Typography, Spin, Space } from 'antd';
 import { HomeOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -12,30 +11,21 @@ function URLShort() {
   const [showURL, setShowURL] = useState(false)
 
   const [loading, setLoading] = useState(false)
-  
-  const API = import.meta.env.VITE_URL_SHORT_URL;
-  const APIKey = import.meta.env.VITE_URL_SHORT_API_KEY
 
-  const headers = {
-    'Authorization': 'Bearer ' + APIKey,
-  };
-  const body = {
-    "long_url": url,
-  }
+  const API = import.meta.env.VITE_URL_URL_SHORTENER
 
   function sendApi() {
     setLoading(true)
     setShowURL(true)
-    axios.post(API, body, {headers})
+    axios.post(API + "?url=" + url)
       .then((response) => {
         setLoading(false)
-        const link = response.data.link;
+        const link = response.data.result.full_short_link;
         setShort(link);
-
       })
       .catch((error) => {
         setLoading(false)
-        console.error('Error fetching API/URL');
+        setShort("No URL provided / API Error")
       });
   }
   function handleInputChange(event) {
@@ -55,32 +45,27 @@ function URLShort() {
 
   return (
     <>
-      <Link to='/'>
-        <Button type='text' className='back-home'>
-          <HomeOutlined /> Home
-        </Button>
+      <div className="centerized">
+      <Link to="/">
+        <Button className='back'><HomeOutlined />Home</Button>
       </Link>
 
-      <div className='container'>
-        <Typography.Title className='title'>Short URL</Typography.Title>
-        <Typography.Title level={5} className='title'>
-          This will shorten your URL/Links
-        </Typography.Title>
+      <Card title={<><Typography.Title level={4}>URL Shortener</Typography.Title><Typography>Shortening URL for aesthetic look</Typography></>} style={{ width: 350}}>
+        <Input placeholder="https://google.com/the-long-parameter" onChange={handleInputChange} className='input' onPressEnter={sendApi} />
 
-        <Input size='large' placeholder="https://google.com" onChange={handleInputChange} className='input' onPressEnter={sendApi} />
-
-        <Button className='generate' type='primary' onClick={sendApi}>
-          Shorten URL
+        <Button className="main-action" type='primary' onClick={sendApi} block size='large'>
+          Shorten the URL
         </Button>
 
         {showURL &&
         <>
         <Typography.Text>Your short URL is: </Typography.Text>
-        <Button size='large' className='shorted' type='primary' onClick={copyPassword}>
+        <Button size='large' onClick={copyPassword} block>
           {loading ? <Spin /> : short}
         </Button>
         </>
         }
+      </Card>
       </div>
     </>
   );
