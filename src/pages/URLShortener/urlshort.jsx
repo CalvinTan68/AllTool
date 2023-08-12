@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Button, Card, Input, Image, Typography, Spin, Space } from 'antd';
 import { HomeOutlined } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 
 function URLShort() {
+  const navigate = useNavigate()
   const [url, setUrl] = useState('');
   const [short, setShort] = useState('');
   const [showURL, setShowURL] = useState(false)
@@ -46,12 +47,12 @@ function URLShort() {
   return (
     <>
       <div className="centerized">
-      <Link to="/">
-        <Button className='back'><HomeOutlined />Home</Button>
-      </Link>
+      <Button className="back" onClick={() => navigate(-1)}><HomeOutlined />Home</Button>
 
       <Card title={<><Typography.Title level={4}>URL Shortener</Typography.Title><Typography>Shortening URL for aesthetic look</Typography></>} style={{ width: 350}}>
-        <Input placeholder="https://google.com/the-long-parameter" onChange={handleInputChange} className='input' onPressEnter={sendApi} />
+        <Space direction='vertical'>
+        <Typography.Text>Input your URL here</Typography.Text>
+        <Input placeholder="https://google.com/the-long-parameter" onChange={handleInputChange} className='input' onPressEnter={sendApi} style={{width:300}} />
 
         <Button className="main-action" type='primary' onClick={sendApi} block size='large'>
           Shorten the URL
@@ -65,6 +66,7 @@ function URLShort() {
         </Button>
         </>
         }
+        </Space>
       </Card>
       </div>
     </>

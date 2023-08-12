@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Card, Typography, Spin, Space, Descriptions } from 'antd';
 import { HomeOutlined } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 
 function NetCheck() {
+  const navigate = useNavigate()
   const [detail, setDetail] = useState({})
 
   const [loading, setLoading] = useState(false)
@@ -34,9 +35,7 @@ function NetCheck() {
   return (
     <>
       <div className="centerized">
-      <Link to="/">
-        <Button className='back'><HomeOutlined />Home</Button>
-      </Link>
+      <Button className="back" onClick={() => navigate(-1)}><HomeOutlined />Home</Button>
 
       <Card title={<><Typography.Title level={4}>Network Checker</Typography.Title><Typography>Check your network information</Typography></>} style={{ width: 350}}>
       <Descriptions column={1} layout="vertical" className='network-data'>

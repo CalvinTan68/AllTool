@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { Card, Col, Collapse, Row, Typography } from 'antd'
-import { LockOutlined, LinkOutlined, WifiOutlined } from '@ant-design/icons'
+import { LockOutlined, LinkOutlined, WifiOutlined, DollarOutlined } from '@ant-design/icons'
 import axios from 'axios'
 
 function Home() {
@@ -20,6 +20,11 @@ function Home() {
           link: '/network-checker',
           label: 'Network Checker',
           image: <WifiOutlined />
+        },
+        {
+          link: '/currency-converter',
+          label: 'Currency Converter',
+          image: <DollarOutlined />
         },
       ]
 

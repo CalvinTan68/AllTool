@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Card, Checkbox, Space, Typography } from 'antd';
 import { HomeOutlined } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function PWGEN() {
+  const navigate = useNavigate()
   const [length] = useState(12);
   const [password, setPassword] = useState('');
   const [useUppercase, setUseUppercase] = useState(true);
@@ -43,10 +44,7 @@ function PWGEN() {
   return (
     <>
     <div className="centerized">
-      <Link to="/">
-        <Button className="back"><HomeOutlined />Home</Button>
-      </Link>
-
+      <Button className="back" onClick={() => navigate(-1)}><HomeOutlined />Home</Button>
       <Card title={<><Typography.Title level={4}>Password Generator</Typography.Title><Typography>Generating a secure password</Typography></>} style={{ width: 350}}>
         <Button size='large' id="clipboard" title="copy" onClick={copyPassword} block>
           <span id="password">{password}</span>

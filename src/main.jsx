@@ -5,6 +5,7 @@ import Home from './pages/Homepage/home'
 import PWGEN from './pages/PasswordGenerator/pwgen'
 import URLShort from './pages/URLShortener/urlshort'
 import NetCheck from './pages/NetworkChecker/netcheck'
+import CurrencyConverter from './pages/CurrencyConverter/converter'
 import './main.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
@@ -14,6 +15,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
         <Route path="/password-generator" element={<PWGEN />} />
         <Route path="/url-shortener" element={<URLShort />} />
         <Route path="/network-checker" element={<NetCheck />} />
+        <Route path="/currency-converter" element={<CurrencyConverter />} />
       </Routes>
     </BrowserRouter>
 )
