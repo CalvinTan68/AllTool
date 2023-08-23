@@ -6,7 +6,7 @@ import PWGEN from './pages/PasswordGenerator/pwgen'
 import URLShort from './pages/URLShortener/urlshort'
 import NetCheck from './pages/NetworkChecker/netcheck'
 import CurrencyConverter from './pages/CurrencyConverter/converter'
-import './main.css'
+import './main.scss'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>

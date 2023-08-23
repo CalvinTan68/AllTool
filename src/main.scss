@@ -26,13 +26,13 @@
 .b {
     font-weight: bold !important;
 }
-
-.ant-card-head-title, .ant-card-body h2, .ant-card-body h5 {
-    text-align: center !important;
-}
-.ant-card-head-title h4, .ant-card-head-title article, .ant-card-body h2, .ant-card-body h5 {
-    margin: 0px !important;
-}
 .ant-input-number-handler-wrap {
     display: none !important;
+}
+
+.ant-card-head-title, .ant-card-body {
+    h1, h2, h3, h4, h5, article {
+        text-align: center !important;
+        margin: 0 !important;
+    }
 }
