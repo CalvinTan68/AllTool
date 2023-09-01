@@ -49,10 +49,10 @@ function URLShort() {
       <div className="centerized">
       <Button className="back" onClick={() => navigate(-1)}><HomeOutlined />Home</Button>
 
-      <Card title={<><Typography.Title level={4}>URL Shortener</Typography.Title><Typography>Shortening URL for aesthetic look</Typography></>} style={{ width: 350}}>
+      <Card title={<><Typography.Title level={4}>URL Shortener</Typography.Title><Typography>Shortening URL for aesthetic look</Typography></>} className='card-app'>
         <Space direction='vertical'>
         <Typography.Text>Input your URL here</Typography.Text>
-        <Input placeholder="https://google.com/the-long-parameter" onChange={handleInputChange} className='input' onPressEnter={shortenLink} style={{width:300}} />
+        <Input placeholder="https://google.com/the-long-parameter" onChange={handleInputChange} className='input' onPressEnter={shortenLink} style={{width:'100%'}}/>
 
         <Button className="main-action" type='primary' onClick={shortenLink} block size='large'>
           Shorten the URL

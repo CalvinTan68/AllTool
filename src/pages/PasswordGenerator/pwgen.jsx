@@ -47,7 +47,7 @@ function PWGEN() {
     <>
     <div className="centerized">
       <Button className="back" onClick={() => navigate(-1)}><HomeOutlined />Home</Button>
-      <Card title={<><Typography.Title level={4}>Password Generator</Typography.Title><Typography>Generating a secure password</Typography></>} style={{ width: 350}}>
+      <Card title={<><Typography.Title level={4}>Password Generator</Typography.Title><Typography>Generating a secure password</Typography></>} className='card-app'>
         <Button size='large' id="clipboard" title="copy" onClick={copyPassword} block>
           <span id="password">{password}</span>
         </Button>

@@ -38,7 +38,7 @@ function CurrencyConverter() {
     return (
         <div className="centerized">
             <Button className="back" onClick={() => navigate(-1)}><HomeOutlined />Home</Button>
-            <Card title={<><Typography.Title level={4}>Currency Converter</Typography.Title><Typography>Realtime currency converter</Typography></>} style={{ width: 350}}>
+            <Card title={<><Typography.Title level={4}>Currency Converter</Typography.Title><Typography>Realtime currency converter</Typography></>} className="card-app">
                 <Space direction="vertical">
                         <Typography.Text>Currency Value</Typography.Text>
                         <InputNumber
