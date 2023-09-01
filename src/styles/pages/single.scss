@@ -1,0 +1,16 @@
+.centerized {
+    display: $flex;
+    justify-content: $center;
+    align-items: $center;
+    height: $vh100;
+
+    .network-data {
+        th.ant-descriptions-item {
+            padding: $zero;
+        }
+    }
+
+    .full-width {
+        width: 100% !important;
+    }
+}

@@ -1,42 +1,12 @@
-.centerized {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-.back {
-    position: absolute !important;
-    left: 20px !important;
-    top: 20px !important;
-    border-radius: 100px !important;
-}
-.main-action {
-    border-radius: 100px !important;
-    margin: 8px 0px !important;
-}
-.home {
-    padding: 5% !important;
-}
-.network-data th.ant-descriptions-item {
-    padding: 0 !important;
-}
-.mt-20 { 
-    margin-top: 20px !important;
-}
-.b {
-    font-weight: bold !important;
-}
-.ant-input-number-handler-wrap {
-    display: none !important;
-}
+// IMPORT BASE DATA
+@import 'src/styles/base/variables';
+@import 'src/styles/base/style';
 
-.ant-card-head-title, .ant-card-body {
-    h1, h2, h3, h4, h5, article {
-        text-align: center !important;
-        margin: 0 !important;
-    }
-}
+// IMPORT COMPONENT STYLES
+@import 'src/styles/components/buttons';
+@import 'src/styles/components/inputs';
+@import 'src/styles/components/cards';
 
-.card-app {
-    width: 350px;
-}
+// IMPORT PAGE STYLES
+@import 'src/styles/pages/home';
+@import 'src/styles/pages/single';

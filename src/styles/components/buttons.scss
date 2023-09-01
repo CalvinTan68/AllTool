@@ -1,0 +1,12 @@
+.ant-btn {
+    &.back {
+        position: $absolute;
+        left: $twenty;
+        top: $twenty;
+        border-radius: $round-corners;
+    }
+    &.main-action {
+        border-radius: $round-corners;
+        margin: 8px 0px !important;
+    }
+}

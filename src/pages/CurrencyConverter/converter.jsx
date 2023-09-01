@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Select, InputNumber, Typography, Spin, Button, Card, Space, Divider } from "antd";
 import { HomeOutlined } from '@ant-design/icons';
-import { data } from './currencies';
+import { data } from '../../data/currencies';
 import axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function CurrencyConverter() {
     const navigate = useNavigate()
@@ -39,25 +39,27 @@ function CurrencyConverter() {
         <div className="centerized">
             <Button className="back" onClick={() => navigate(-1)}><HomeOutlined />Home</Button>
             <Card title={<><Typography.Title level={4}>Currency Converter</Typography.Title><Typography>Realtime currency converter</Typography></>} className="card-app">
-                <Space direction="vertical">
+                <Space direction="vertical" className="full-width">
                         <Typography.Text>Currency Value</Typography.Text>
                         <InputNumber
                             placeholder="Input base currency"
                             value={baseValue}
-                            style={{width:300}}
                             onChange={(value) => setBaseValue(value)}
                             formatter={(value) => `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                             parser={(value) => value.replace(/\$\s?|(,*)/g, '')}
                             addonBefore={baseCurrency}
                             onPressEnter={convert}
+                            size="large"
+                            className="full-width"
                         />
                         <Typography.Text>Base Currency</Typography.Text>
                         <Select
                             showSearch
-                            style={{width:300}}
                             placeholder="Select base currency"
                             value={baseCurrency}
                             onChange={(value) => setBaseCurrency(value)}
+                            size="large"
+                            className="full-width"
                         >
                             {data.map((currency) => (
                                 <Option key={currency.number} value={currency.code}>
@@ -69,15 +71,18 @@ function CurrencyConverter() {
                         <Select
                             showSearch
                             placeholder="Select target currency"
-                            value={targetCurrency}
-                            style={{width:300}}
+                            value={targetCurrency} 
                             onChange={(value) => setTargetCurrency(value)}
+                            size="large"
+                            className="full-width"
                         >
-                            {data.map((currency) => (
-                                <Option key={currency.number} value={currency.code}>
-                                    {currency.code} - {currency.name}
-                                </Option>
-                            ))}
+                            {data
+                                .filter((currency) => currency.code !== baseCurrency)
+                                .map((currency) => (
+                                    <Option key={currency.number} value={currency.code}>
+                                        {currency.code} - {currency.name}
+                                    </Option>
+                                ))}
                         </Select>
                         <Button type='primary' size='large' className='main-action' onClick={convert} block>Convert</Button>
                 </Space>

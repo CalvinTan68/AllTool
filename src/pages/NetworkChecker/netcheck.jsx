@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Card, Typography, Spin, Space, Descriptions } from 'antd';
+import { Button, Card, Typography, Spin, Descriptions } from 'antd';
 import { HomeOutlined } from '@ant-design/icons';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -14,7 +14,7 @@ function NetCheck() {
   const IPDetail = import.meta.env.VITE_URL_IP_DETAIL
   const IPDetailToken = import.meta.env.VITE_URL_IP_DETAIL_TOKEN
 
-  function sendApi() {
+  function getNetworkDetails() {
     setLoading(true)
     axios.get(IPDetail + '?token=' + IPDetailToken)
     .then((res) => {
@@ -29,7 +29,7 @@ function NetCheck() {
   }
 
   useEffect(() => {
-    sendApi()
+    getNetworkDetails()
   },[])
 
   return (
@@ -52,7 +52,7 @@ function NetCheck() {
           {loading ? <Spin /> : <><Typography.Text>{detail.city}, {detail.region}</Typography.Text></>}
         </Descriptions.Item>
         </Descriptions>
-      <Button type='primary' size='large' className='main-action' onClick={sendApi} block>Refresh Data</Button>
+      <Button type='primary' size='large' className='main-action' onClick={getNetworkDetails} block>Refresh Data</Button>
       </Card>
       </div>
     </>

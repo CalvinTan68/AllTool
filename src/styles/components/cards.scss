@@ -1,0 +1,17 @@
+.ant-card {
+    .ant-card-head-title, .ant-card-body {
+        h1, h2, h3, h4, h5, article {
+            text-align: $center;
+            margin: $zero;
+        }
+    }
+    &.card-app {
+        width: 400px;
+    }
+    @media (max-width: 600px){
+        &.card-app {
+            width: 90vw;
+        }
+    }
+    
+}

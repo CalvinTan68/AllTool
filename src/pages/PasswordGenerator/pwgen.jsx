@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Card, Checkbox, Slider, Space, Typography } from 'antd';
 import { HomeOutlined } from '@ant-design/icons';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function PWGEN() {
   const navigate = useNavigate()

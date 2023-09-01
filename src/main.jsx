@@ -2,20 +2,21 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Homepage/home'
-import PWGEN from './pages/PasswordGenerator/pwgen'
-import URLShort from './pages/URLShortener/urlshort'
-import NetCheck from './pages/NetworkChecker/netcheck'
-import CurrencyConverter from './pages/CurrencyConverter/converter'
 import './main.scss'
+
+import { pages } from './data/pages'
+
+const routesList = pages.map((item) => {
+  return (
+  <Route key={item.link} path={item.link} element={item.page} />
+  )
+})
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/password-generator" element={<PWGEN />} />
-        <Route path="/url-shortener" element={<URLShort />} />
-        <Route path="/network-checker" element={<NetCheck />} />
-        <Route path="/currency-converter" element={<CurrencyConverter />} />
+        {routesList}
       </Routes>
     </BrowserRouter>
 )
