@@ -15,7 +15,7 @@ function URLShort() {
 
   const API = import.meta.env.VITE_URL_URL_SHORTENER
 
-  function sendApi() {
+  function shortenLink() {
     setLoading(true)
     setShowURL(true)
     axios.post(API + "?url=" + url)
@@ -52,9 +52,9 @@ function URLShort() {
       <Card title={<><Typography.Title level={4}>URL Shortener</Typography.Title><Typography>Shortening URL for aesthetic look</Typography></>} style={{ width: 350}}>
         <Space direction='vertical'>
         <Typography.Text>Input your URL here</Typography.Text>
-        <Input placeholder="https://google.com/the-long-parameter" onChange={handleInputChange} className='input' onPressEnter={sendApi} style={{width:300}} />
+        <Input placeholder="https://google.com/the-long-parameter" onChange={handleInputChange} className='input' onPressEnter={shortenLink} style={{width:300}} />
 
-        <Button className="main-action" type='primary' onClick={sendApi} block size='large'>
+        <Button className="main-action" type='primary' onClick={shortenLink} block size='large'>
           Shorten the URL
         </Button>
 

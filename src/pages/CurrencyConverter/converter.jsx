@@ -49,6 +49,7 @@ function CurrencyConverter() {
                             formatter={(value) => `${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')}
                             parser={(value) => value.replace(/\$\s?|(,*)/g, '')}
                             addonBefore={baseCurrency}
+                            onPressEnter={convert}
                         />
                         <Typography.Text>Base Currency</Typography.Text>
                         <Select

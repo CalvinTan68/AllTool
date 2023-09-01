@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Card, Checkbox, Space, Typography } from 'antd';
+import { Button, Card, Checkbox, Slider, Space, Typography } from 'antd';
 import { HomeOutlined } from '@ant-design/icons';
 import { Link, useNavigate } from 'react-router-dom';
 
 function PWGEN() {
   const navigate = useNavigate()
-  const [length] = useState(12);
+  const [length, setLength] = useState(12);
   const [password, setPassword] = useState('');
   const [useUppercase, setUseUppercase] = useState(true);
   const [useLowercase, setUseLowercase] = useState(true);
@@ -17,7 +17,7 @@ function PWGEN() {
     if (useUppercase) charset += 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     if (useLowercase) charset += 'abcdefghijklmnopqrstuvwxyz';
     if (useNumbers) charset += '0123456789';
-    if (useSymbols) charset += '~!@#$%^&*()_+{}:;",./<>?[]-';
+    if (useSymbols) charset += '`~!@#$%^&*()_-+={[}]|\:;"<,>.?/';
 
     let password = '';
     for (let i = 0; i < length; i++) {
@@ -39,7 +39,9 @@ function PWGEN() {
 
   useEffect(() => {
     generatePassword()
-  },[])
+  },[length])
+
+  const formatter = (value) => `Password Length : ${value} digit`;
 
   return (
     <>
@@ -50,7 +52,8 @@ function PWGEN() {
           <span id="password">{password}</span>
         </Button>
 
-        <Space direction="vertical" style={{margin:'8px 0px 0px 0px'}}>
+        <Space direction="vertical" style={{margin:'8px 0px 0px 0px', width: '100%'}}>
+          <Slider min={8} max={20} defaultValue={length} onChange={value => setLength(value)} tooltip={{ formatter, placement:'bottom'}} />
           <Checkbox checked={useUppercase} id="uppercase" onChange={(e) => setUseUppercase(e.target.checked)}>
             Uppercase (A-Z)
           </Checkbox>
