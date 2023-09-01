@@ -18,9 +18,10 @@ function CurrencyConverter() {
 
     function convert() {
         setLoading(true);
-        axios.get(`${API}${baseCurrency}`)
+        axios.get(`${API}${baseCurrency}`+`/${targetCurrency}`)
             .then((res) => {
-                const currency = res.data.conversion_rates[targetCurrency];
+                console.log(res)
+                const currency = res.data.conversion_rate;
                 const calculatedValue = (parseFloat(baseValue) * currency).toFixed(2);
                 setTargetValue(calculatedValue);
                 setLoading(false);
