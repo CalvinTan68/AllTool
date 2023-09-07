@@ -1,8 +1,9 @@
-import { LockOutlined, LinkOutlined, WifiOutlined, TransactionOutlined } from '@ant-design/icons'
+import { LockOutlined, LinkOutlined, WifiOutlined, TransactionOutlined, PercentageOutlined } from '@ant-design/icons'
 import PWGEN from '../pages/PasswordGenerator/pwgen'
 import LinkShort from '../pages/LinkShortener/linkshort'
 import NetCheck from '../pages/NetworkChecker/netcheck'
 import CurrencyConverter from '../pages/CurrencyConverter/converter'
+import DiscountedPrice from '../pages/DiscountedPrice/discounted'
 
 export const pages = 
 [
@@ -29,5 +30,11 @@ export const pages =
         label: 'Currency Converter',
         page: <CurrencyConverter />,
         image: <TransactionOutlined />
+    },
+    {
+        link: '/discounted-prices',
+        label: 'Discounted Price',
+        page: <DiscountedPrice />,
+        image: <PercentageOutlined />
     },
 ]
