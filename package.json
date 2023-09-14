@@ -10,12 +10,12 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "antd": "^5.8.4",
-    "axios": "^1.4.0",
+    "antd": "^5.9.0",
+    "axios": "^1.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.14.2",
-    "sass": "^1.66.1"
+    "react-router-dom": "^6.16.0",
+    "sass": "^1.67.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
