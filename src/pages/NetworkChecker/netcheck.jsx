@@ -12,8 +12,8 @@ function NetCheck() {
 
   const [loading, setLoading] = useState(false);
 
-  const IPDetail = import.meta.env.VITE_URL_IP_DETAIL;
-  const IPDetailToken = import.meta.env.VITE_URL_IP_DETAIL_TOKEN;
+  const IPDetail = import.meta.env.VITE_IP_DETAIL;
+  const IPDetailToken = import.meta.env.VITE_IP_DETAIL_TOKEN;
 
   function getNetworkDetails() {
     setLoading(true);
@@ -105,6 +105,7 @@ function NetCheck() {
             className="main-action"
             onClick={getNetworkDetails}
             block
+            loading={loading}
           >
             Refresh Data
           </Button>

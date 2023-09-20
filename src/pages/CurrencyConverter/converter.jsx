@@ -25,7 +25,7 @@ function CurrencyConverter() {
   const [targetValue, setTargetValue] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const API = import.meta.env.VITE_URL_CURRENCY_CONVERTER;
+  const API = import.meta.env.VITE_CURRENCY_CONVERTER;
 
   function convert() {
     setLoading(true);
@@ -124,6 +124,7 @@ function CurrencyConverter() {
               className="main-action"
               onClick={convert}
               block
+              loading={loading}
             >
               Convert
             </Button>
