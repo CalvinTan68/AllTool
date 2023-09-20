@@ -1,5 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Button, Card, Checkbox, Slider, Space, Typography } from "antd";
+import {
+  Button,
+  Card,
+  Checkbox,
+  Slider,
+  Space,
+  Typography,
+  message,
+} from "antd";
 import { HomeOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 
@@ -11,6 +19,7 @@ function PWGEN() {
   const [useLowercase, setUseLowercase] = useState(true);
   const [useNumbers, setUseNumbers] = useState(true);
   const [useSymbols, setUseSymbols] = useState(true);
+  const [messageApi, contextHolder] = message.useMessage();
 
   function generatePassword() {
     let charset = "";
@@ -29,11 +38,10 @@ function PWGEN() {
   function copyPassword() {
     if (password) {
       navigator.clipboard.writeText(password);
-      setPassword("Password copied to clipboard");
-
-      setTimeout(() => {
-        setPassword(password);
-      }, 1500);
+      messageApi.open({
+        type: "success",
+        content: "Password copied",
+      });
     }
   }
 
@@ -45,6 +53,7 @@ function PWGEN() {
 
   return (
     <>
+      {contextHolder}
       <div className="centerized">
         <Button className="back" onClick={() => navigate(-1)}>
           <HomeOutlined />
