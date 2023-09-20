@@ -122,7 +122,7 @@ function LinkShort() {
               <>
                 <Typography.Text>Your short URL is: </Typography.Text>
                 <Button size="large" onClick={copyPassword} block>
-                  {loading ? <Spin /> : short}
+                  {short}
                 </Button>
               </>
             )}
