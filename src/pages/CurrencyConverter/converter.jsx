@@ -10,7 +10,7 @@ import {
   Divider,
   message,
 } from "antd";
-import { HomeOutlined } from "@ant-design/icons";
+import { HomeOutlined, LoadingOutlined } from "@ant-design/icons";
 import { data } from "../../data/currencies";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -53,6 +53,15 @@ function CurrencyConverter() {
   useEffect(() => {
     convert();
   }, []);
+
+  const loadingIcon = (
+    <LoadingOutlined
+      style={{
+        fontSize: 22,
+      }}
+      spin
+    />
+  );
 
   return (
     <>
@@ -124,7 +133,6 @@ function CurrencyConverter() {
               className="main-action"
               onClick={convert}
               block
-              loading={loading}
             >
               Convert
             </Button>
@@ -132,7 +140,7 @@ function CurrencyConverter() {
           <Divider>Value</Divider>
           <Typography.Title level={5} className="b">
             {loading ? (
-              <Spin />
+              <Spin indicator={loadingIcon} />
             ) : (
               <>
                 {targetCurrency} {parseFloat(targetValue).toLocaleString()}

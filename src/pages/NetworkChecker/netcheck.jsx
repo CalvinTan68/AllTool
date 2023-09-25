@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button, Card, Typography, Spin, Descriptions, message } from "antd";
-import { HomeOutlined } from "@ant-design/icons";
+import { HomeOutlined, LoadingOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -41,6 +41,15 @@ function NetCheck() {
     getNetworkDetails();
   }, []);
 
+  const loadingIcon = (
+    <LoadingOutlined
+      style={{
+        fontSize: 22,
+      }}
+      spin
+    />
+  );
+
   return (
     <>
       {contextHolder}
@@ -62,7 +71,7 @@ function NetCheck() {
           <Descriptions column={1} layout="vertical" className="network-data">
             <Descriptions.Item label="IP Address">
               {loading ? (
-                <Spin />
+                <Spin indicator={loadingIcon} />
               ) : (
                 <>
                   <Typography.Text copyable>{detail.ip}</Typography.Text>
@@ -71,7 +80,7 @@ function NetCheck() {
             </Descriptions.Item>
             <Descriptions.Item label="Provider">
               {loading ? (
-                <Spin />
+                <Spin indicator={loadingIcon} />
               ) : (
                 <>
                   <Typography.Text>{detail.org}</Typography.Text>
@@ -80,7 +89,7 @@ function NetCheck() {
             </Descriptions.Item>
             <Descriptions.Item label="Country">
               {loading ? (
-                <Spin />
+                <Spin indicator={loadingIcon} />
               ) : (
                 <>
                   <Typography.Text>{detail.country}</Typography.Text>
@@ -89,7 +98,7 @@ function NetCheck() {
             </Descriptions.Item>
             <Descriptions.Item label="Area">
               {loading ? (
-                <Spin />
+                <Spin indicator={loadingIcon} />
               ) : (
                 <>
                   <Typography.Text>
@@ -105,7 +114,6 @@ function NetCheck() {
             className="main-action"
             onClick={getNetworkDetails}
             block
-            loading={loading}
           >
             Refresh Data
           </Button>

@@ -1,15 +1,6 @@
 import React, { useState } from "react";
-import {
-  Button,
-  Card,
-  Input,
-  Image,
-  Typography,
-  Spin,
-  Space,
-  message,
-} from "antd";
-import { HomeOutlined } from "@ant-design/icons";
+import { Button, Card, Input, Typography, Spin, Space, message } from "antd";
+import { HomeOutlined, LoadingOutlined } from "@ant-design/icons";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
@@ -17,7 +8,6 @@ function LinkShort() {
   const navigate = useNavigate();
   const [url, setUrl] = useState("");
   const [short, setShort] = useState("");
-  const [showURL, setShowURL] = useState(false);
   const [messageApi, contextHolder] = message.useMessage();
 
   const [loading, setLoading] = useState(false);
@@ -36,7 +26,7 @@ function LinkShort() {
 
   function shortenLink() {
     setLoading(true);
-    setShowURL(true);
+    setShort("");
     axios
       .post(API, body, { headers: header })
       .then((response) => {
@@ -79,6 +69,15 @@ function LinkShort() {
     }
   }
 
+  const loadingIcon = (
+    <LoadingOutlined
+      style={{
+        fontSize: 22,
+      }}
+      spin
+    />
+  );
+
   return (
     <>
       {contextHolder}
@@ -113,11 +112,15 @@ function LinkShort() {
               onClick={shortenLink}
               block
               size="large"
-              loading={loading}
             >
               Shorten the link
             </Button>
 
+            {loading && (
+              <Typography>
+                <Spin indicator={loadingIcon} />
+              </Typography>
+            )}
             {short && (
               <>
                 <Typography.Text>Your short URL is: </Typography.Text>
