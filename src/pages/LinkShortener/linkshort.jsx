@@ -8,8 +8,6 @@ function LinkShort() {
   const navigate = useNavigate();
   const [url, setUrl] = useState("");
   const [short, setShort] = useState("");
-  const [messageApi, contextHolder] = message.useMessage();
-
   const [loading, setLoading] = useState(false);
 
   const API = import.meta.env.VITE_URL_SHORTENER;
@@ -33,10 +31,7 @@ function LinkShort() {
         setLoading(false);
         const link = response.data.link;
         setShort(link);
-        messageApi.open({
-          type: "success",
-          content: "Short URL generated",
-        });
+        message.success("Short URL generated");
       })
       .catch((error) => {
         axios
@@ -48,10 +43,7 @@ function LinkShort() {
           })
           .catch((error) => {
             setLoading(false);
-            messageApi.open({
-              type: "error",
-              content: "No URL provided / API Error",
-            });
+            message.error("No URL provided / API Error");
           });
       });
   }
@@ -62,10 +54,7 @@ function LinkShort() {
   function copyPassword() {
     if (short) {
       navigator.clipboard.writeText(short);
-      messageApi.open({
-        type: "success",
-        content: "URL Copied",
-      });
+      message.success("Short URL copied");
     }
   }
 
@@ -80,7 +69,6 @@ function LinkShort() {
 
   return (
     <>
-      {contextHolder}
       <div className="centerized">
         <Button className="back" onClick={() => navigate(-1)}>
           <HomeOutlined />

@@ -16,7 +16,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function CurrencyConverter() {
-  const [messageApi, contextHolder] = message.useMessage();
   const navigate = useNavigate();
   const { Option } = Select;
   const [baseCurrency, setBaseCurrency] = useState("MYR");
@@ -36,17 +35,11 @@ function CurrencyConverter() {
         const calculatedValue = (parseFloat(baseValue) * currency).toFixed(2);
         setTargetValue(calculatedValue);
         setLoading(false);
-        messageApi.open({
-          type: "success",
-          content: "Value converted",
-        });
+        message.success("Value converted");
       })
       .catch((error) => {
         setLoading(false);
-        messageApi.open({
-          type: "error",
-          content: "API Error / Data not specified",
-        });
+        message.error("API Error / Data not specified");
       });
   }
 
@@ -65,7 +58,6 @@ function CurrencyConverter() {
 
   return (
     <>
-      {contextHolder}
       <div className="centerized">
         <Button className="back" onClick={() => navigate(-1)}>
           <HomeOutlined />

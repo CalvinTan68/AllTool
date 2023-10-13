@@ -19,7 +19,6 @@ function PWGEN() {
   const [useLowercase, setUseLowercase] = useState(true);
   const [useNumbers, setUseNumbers] = useState(true);
   const [useSymbols, setUseSymbols] = useState(true);
-  const [messageApi, contextHolder] = message.useMessage();
 
   function generatePassword() {
     let charset = "";
@@ -38,10 +37,7 @@ function PWGEN() {
   function copyPassword() {
     if (password) {
       navigator.clipboard.writeText(password);
-      messageApi.open({
-        type: "success",
-        content: "Password copied",
-      });
+      message.success("Password copied");
     }
   }
 
@@ -53,7 +49,6 @@ function PWGEN() {
 
   return (
     <>
-      {contextHolder}
       <div className="centerized">
         <Button className="back" onClick={() => navigate(-1)}>
           <HomeOutlined />

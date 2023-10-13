@@ -5,8 +5,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function NetCheck() {
-  const [messageApi, contextHolder] = message.useMessage();
-
   const navigate = useNavigate();
   const [detail, setDetail] = useState({});
 
@@ -23,17 +21,11 @@ function NetCheck() {
         setLoading(false);
         const ipdetail = res.data;
         setDetail(ipdetail);
-        messageApi.open({
-          type: "success",
-          content: "Network data acquired",
-        });
+        message.success("Network data retrieved");
       })
       .catch((error) => {
         setLoading(false);
-        messageApi.open({
-          type: "error",
-          content: "Failed to retrieve network data",
-        });
+        message.error("Failed to retrieve network data");
       });
   }
 
@@ -52,7 +44,6 @@ function NetCheck() {
 
   return (
     <>
-      {contextHolder}
       <div className="centerized">
         <Button className="back" onClick={() => navigate(-1)}>
           <HomeOutlined />
