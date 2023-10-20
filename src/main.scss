@@ -10,3 +10,7 @@
 // IMPORT PAGE STYLES
 @import "src/styles/pages/home";
 @import "src/styles/pages/single";
+
+* {
+user-select: none;
+}
