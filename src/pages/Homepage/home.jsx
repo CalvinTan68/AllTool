@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { Card, Col, Row, Typography, message, notification } from "antd";
+import { Card, Col, Row, Typography } from "antd";
 import { pages } from "../../data/pages";
 
 function Home() {
@@ -14,7 +14,7 @@ function Home() {
           {pages.map((item) => {
             return (
               <>
-                <Col xs={12} md={8} xl={6}>
+                <Col xs={12}>
                   <Link to={item.link}>
                     <Card
                       hoverable={true}
