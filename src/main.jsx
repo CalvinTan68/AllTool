@@ -1,8 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Homepage/home";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./main.scss";
+import Home from "./pages/Homepage/home";
+
+import "antd/dist/reset.css";
 
 import { pages } from "./data/pages";
 
