@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from "react";
+import { HomeOutlined, LoadingOutlined } from "@ant-design/icons";
 import {
-  Select,
-  InputNumber,
-  Typography,
-  Spin,
   Button,
   Card,
-  Space,
   Divider,
+  InputNumber,
+  Select,
+  Space,
+  Spin,
+  Typography,
   message,
 } from "antd";
-import { HomeOutlined, LoadingOutlined } from "@ant-design/icons";
-import { data } from "../../data/currencies";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { data } from "../../data/currencies";
 
 function CurrencyConverter() {
   const navigate = useNavigate();
@@ -45,7 +45,7 @@ function CurrencyConverter() {
 
   useEffect(() => {
     convert();
-  }, []);
+  }, [targetCurrency]);
 
   const loadingIcon = (
     <LoadingOutlined
@@ -95,6 +95,12 @@ function CurrencyConverter() {
               onChange={(value) => setBaseCurrency(value)}
               size="large"
               className="full-width"
+              filterOption={(inputValue, option) =>
+                option.children
+                  .join("")
+                  .toLowerCase()
+                  .includes(inputValue.toLowerCase())
+              }
             >
               {data.map((currency) => (
                 <Option key={currency.number} value={currency.code}>
@@ -110,6 +116,12 @@ function CurrencyConverter() {
               onChange={(value) => setTargetCurrency(value)}
               size="large"
               className="full-width"
+              filterOption={(inputValue, option) =>
+                option.children
+                  .join("")
+                  .toLowerCase()
+                  .includes(inputValue.toLowerCase())
+              }
             >
               {data
                 .filter((currency) => currency.code !== baseCurrency)
