@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { HomeOutlined } from "@ant-design/icons";
 import {
   Button,
   Card,
@@ -8,7 +8,7 @@ import {
   Typography,
   message,
 } from "antd";
-import { HomeOutlined } from "@ant-design/icons";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 function PWGEN() {
@@ -43,7 +43,7 @@ function PWGEN() {
 
   useEffect(() => {
     generatePassword();
-  }, [length]);
+  }, [length, useUppercase, useLowercase, useNumbers, useSymbols]);
 
   const formatter = (value) => `Password Length : ${value} digit`;
 
