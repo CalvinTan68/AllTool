@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://alltool.netlify.app/sitemap.xml
