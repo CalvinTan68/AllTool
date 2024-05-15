@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 
 function PWGEN() {
   const navigate = useNavigate();
-  const [length, setLength] = useState(12);
+  const [length, setLength] = useState(15);
   const [password, setPassword] = useState("");
   const [useUppercase, setUseUppercase] = useState(true);
   const [useLowercase, setUseLowercase] = useState(true);
@@ -78,8 +78,8 @@ function PWGEN() {
             style={{ margin: "8px 0px 0px 0px", width: "100%" }}
           >
             <Slider
-              min={10}
-              max={20}
+              min={12}
+              max={30}
               defaultValue={length}
               onChange={(value) => setLength(value)}
               tooltip={{ formatter, placement: "bottom" }}
