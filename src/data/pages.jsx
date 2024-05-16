@@ -1,13 +1,17 @@
 import {
-  LockOutlined,
   LinkOutlined,
-  WifiOutlined,
+  LockOutlined,
   TransactionOutlined,
+  WifiOutlined,
 } from "@ant-design/icons";
-import PWGEN from "../pages/PasswordGenerator/pwgen";
-import LinkShort from "../pages/LinkShortener/linkshort";
-import NetCheck from "../pages/NetworkChecker/netcheck";
-import CurrencyConverter from "../pages/CurrencyConverter/converter";
+import { lazy } from "react";
+
+const PWGEN = lazy(() => import("../pages/PasswordGenerator/pwgen"));
+const LinkShort = lazy(() => import("../pages/LinkShortener/linkshort"));
+const NetCheck = lazy(() => import("../pages/NetworkChecker/netcheck"));
+const CurrencyConverter = lazy(() =>
+  import("../pages/CurrencyConverter/converter")
+);
 
 export const pages = [
   {
