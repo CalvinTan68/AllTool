@@ -1,16 +1,16 @@
 // IMPORT BASE DATA
-@import "src/styles/base/variables";
-@import "src/styles/base/style";
+@import "./styles/base/variables";
+@import "./styles/base/style";
 
 // IMPORT COMPONENT STYLES
-@import "src/styles/components/buttons";
-@import "src/styles/components/inputs";
-@import "src/styles/components/cards";
+@import "./styles/components/buttons";
+@import "./styles/components/inputs";
+@import "./styles/components/cards";
 
 // IMPORT PAGE STYLES
-@import "src/styles/pages/home";
-@import "src/styles/pages/single";
+@import "./styles/pages/home";
+@import "./styles/pages/single";
 
 * {
-user-select: none;
+  user-select: none;
 }
