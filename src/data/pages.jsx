@@ -22,7 +22,7 @@ export const pages = [
   },
   {
     link: "/link-shortener",
-    label: "Link Shortener",
+    label: "URL/Link Shortener",
     page: <LinkShort />,
     image: <LinkOutlined />,
   },
