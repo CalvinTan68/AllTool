@@ -25,7 +25,7 @@ function PWGEN() {
     if (useUppercase) charset += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     if (useLowercase) charset += "abcdefghijklmnopqrstuvwxyz";
     if (useNumbers) charset += "0123456789";
-    if (useSymbols) charset += '`~!@#$%^&*()_-+={[}]|:;"<,>.?/';
+    if (useSymbols) charset += "~!@#$%^&*()_-+={[}]|:;<,>.?/";
 
     let password = "";
     for (let i = 0; i < length; i++) {
@@ -79,7 +79,7 @@ function PWGEN() {
           >
             <Slider
               min={12}
-              max={30}
+              max={20}
               defaultValue={length}
               onChange={(value) => setLength(value)}
               tooltip={{ formatter, placement: "bottom" }}
