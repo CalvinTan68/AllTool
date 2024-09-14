@@ -3,9 +3,11 @@ import React from "react";
 
 const CenterLoading = () => {
   return (
-    <div className="centerized">
-      <Spin />
-    </div>
+    <>
+      <div className="centerized">
+        <Spin />
+      </div>
+    </>
   );
 };
 

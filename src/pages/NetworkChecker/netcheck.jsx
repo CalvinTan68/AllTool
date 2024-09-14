@@ -1,11 +1,10 @@
-import React, { useEffect, useState } from "react";
-import { Button, Card, Typography, Spin, Descriptions, message } from "antd";
-import { HomeOutlined, LoadingOutlined } from "@ant-design/icons";
-import { useNavigate } from "react-router-dom";
+import { LoadingOutlined } from "@ant-design/icons";
+import { Button, Card, Descriptions, message, Spin, Typography } from "antd";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
+import HomeButton from "../../components/homeButton";
 
 function NetCheck() {
-  const navigate = useNavigate();
   const [detail, setDetail] = useState({});
 
   const [loading, setLoading] = useState(false);
@@ -45,11 +44,7 @@ function NetCheck() {
   return (
     <>
       <div className="centerized">
-        <Button className="back" onClick={() => navigate(-1)}>
-          <HomeOutlined />
-          Home
-        </Button>
-
+        <HomeButton />
         <Card
           title={
             <>

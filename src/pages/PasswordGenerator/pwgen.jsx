@@ -1,4 +1,3 @@
-import { HomeOutlined } from "@ant-design/icons";
 import {
   Button,
   Card,
@@ -9,10 +8,9 @@ import {
   message,
 } from "antd";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import HomeButton from "../../components/homeButton";
 
 function PWGEN() {
-  const navigate = useNavigate();
   const [length, setLength] = useState(15);
   const [password, setPassword] = useState("");
   const [useUppercase, setUseUppercase] = useState(true);
@@ -50,10 +48,7 @@ function PWGEN() {
   return (
     <>
       <div className="centerized">
-        <Button className="back" onClick={() => navigate(-1)}>
-          <HomeOutlined />
-          Home
-        </Button>
+        <HomeButton />
         <Card
           title={
             <>

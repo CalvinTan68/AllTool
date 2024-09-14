@@ -1,11 +1,10 @@
-import React, { useState } from "react";
-import { Button, Card, Input, Typography, Spin, Space, message } from "antd";
-import { HomeOutlined, LoadingOutlined } from "@ant-design/icons";
-import { useNavigate } from "react-router-dom";
+import { LoadingOutlined } from "@ant-design/icons";
+import { Button, Card, Input, Space, Spin, Typography, message } from "antd";
 import axios from "axios";
+import React, { useState } from "react";
+import HomeButton from "../../components/homeButton";
 
 function LinkShort() {
-  const navigate = useNavigate();
   const [url, setUrl] = useState("");
   const [short, setShort] = useState("");
   const [loading, setLoading] = useState(false);
@@ -70,11 +69,7 @@ function LinkShort() {
   return (
     <>
       <div className="centerized">
-        <Button className="back" onClick={() => navigate(-1)}>
-          <HomeOutlined />
-          Home
-        </Button>
-
+        <HomeButton />
         <Card
           title={
             <>

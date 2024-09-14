@@ -1,4 +1,4 @@
-import { HomeOutlined, LoadingOutlined } from "@ant-design/icons";
+import { LoadingOutlined } from "@ant-design/icons";
 import {
   Button,
   Card,
@@ -12,11 +12,10 @@ import {
 } from "antd";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import HomeButton from "../../components/homeButton";
 import { data } from "../../data/currencies";
 
 function CurrencyConverter() {
-  const navigate = useNavigate();
   const { Option } = Select;
   const [baseCurrency, setBaseCurrency] = useState("MYR");
   const [targetCurrency, setTargetCurrency] = useState("IDR");
@@ -59,10 +58,7 @@ function CurrencyConverter() {
   return (
     <>
       <div className="centerized">
-        <Button className="back" onClick={() => navigate(-1)}>
-          <HomeOutlined />
-          Home
-        </Button>
+        <HomeButton />
         <Card
           title={
             <>
