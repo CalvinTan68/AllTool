@@ -3,29 +3,30 @@ import { Button, Card, Input, Space, Spin, Typography, message } from "antd";
 import axios from "axios";
 import React, { useState } from "react";
 import HomeButton from "../../components/homeButton";
+import {
+  VITE_URL_SHORTENER,
+  VITE_URL_SHORTENER_BK,
+  VITE_URL_SHORTENER_TOKEN,
+} from "../../data/constants";
 
 function LinkShort() {
   const [url, setUrl] = useState("");
   const [short, setShort] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const API = import.meta.env.VITE_URL_SHORTENER;
-  const API_TOKEN = import.meta.env.VITE_URL_SHORTENER_TOKEN;
   const body = {
     long_url: url,
   };
   const header = {
-    Authorization: "Bearer " + API_TOKEN,
+    Authorization: "Bearer " + VITE_URL_SHORTENER_TOKEN,
     "Content-Type": "application/json",
   };
-
-  const APIBK = import.meta.env.VITE_URL_SHORTENER_BK;
 
   function shortenLink() {
     setLoading(true);
     setShort("");
     axios
-      .post(API, body, { headers: header })
+      .post(VITE_URL_SHORTENER, body, { headers: header })
       .then((response) => {
         setLoading(false);
         const link = response.data.link;
@@ -34,7 +35,7 @@ function LinkShort() {
       })
       .catch((error) => {
         axios
-          .post(APIBK + "?url=" + url)
+          .post(VITE_URL_SHORTENER_BK + "?url=" + url)
           .then((res) => {
             setLoading(false);
             const linkbk = res.data.result.full_short_link;

@@ -13,6 +13,7 @@ import {
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import HomeButton from "../../components/homeButton";
+import { VITE_CURRENCY_CONVERTER } from "../../data/constants";
 import { data } from "../../data/currencies";
 
 function CurrencyConverter() {
@@ -23,12 +24,10 @@ function CurrencyConverter() {
   const [targetValue, setTargetValue] = useState("");
   const [loading, setLoading] = useState(false);
 
-  const API = import.meta.env.VITE_CURRENCY_CONVERTER;
-
   function convert() {
     setLoading(true);
     axios
-      .get(`${API}${baseCurrency}` + `/${targetCurrency}`)
+      .get(`${VITE_CURRENCY_CONVERTER}${baseCurrency}` + `/${targetCurrency}`)
       .then((res) => {
         const currency = res.data.conversion_rate;
         const calculatedValue = (parseFloat(baseValue) * currency).toFixed(2);

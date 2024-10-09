@@ -3,19 +3,17 @@ import { Button, Card, Descriptions, message, Spin, Typography } from "antd";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import HomeButton from "../../components/homeButton";
+import { VITE_IP_DETAIL, VITE_IP_DETAIL_TOKEN } from "../../data/constants";
 
 function NetCheck() {
   const [detail, setDetail] = useState({});
 
   const [loading, setLoading] = useState(false);
 
-  const IPDetail = import.meta.env.VITE_IP_DETAIL;
-  const IPDetailToken = import.meta.env.VITE_IP_DETAIL_TOKEN;
-
   function getNetworkDetails() {
     setLoading(true);
     axios
-      .get(IPDetail + "?token=" + IPDetailToken)
+      .get(VITE_IP_DETAIL + "?token=" + VITE_IP_DETAIL_TOKEN)
       .then((res) => {
         setLoading(false);
         const ipdetail = res.data;
