@@ -1,13 +1,6 @@
-import {
-  Button,
-  Card,
-  Checkbox,
-  Slider,
-  Space,
-  Typography,
-  message,
-} from "antd";
+import { Button, Checkbox, Slider, Space, message } from "antd";
 import React, { useEffect, useState } from "react";
+import ContentCard from "../../components/contentCard";
 import HomeButton from "../../components/homeButton";
 
 function PWGEN() {
@@ -49,14 +42,9 @@ function PWGEN() {
     <>
       <div className="centerized">
         <HomeButton />
-        <Card
-          title={
-            <>
-              <Typography.Title level={4}>Password Generator</Typography.Title>
-              <Typography>Generating a secure password</Typography>
-            </>
-          }
-          className="card-app"
+        <ContentCard
+          title={"Password Generator"}
+          description={"Generating a secure password"}
         >
           <Button
             size="large"
@@ -119,7 +107,7 @@ function PWGEN() {
           >
             Generate Password
           </Button>
-        </Card>
+        </ContentCard>
       </div>
     </>
   );

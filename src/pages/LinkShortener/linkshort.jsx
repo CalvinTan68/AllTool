@@ -1,7 +1,8 @@
 import { LoadingOutlined } from "@ant-design/icons";
-import { Button, Card, Input, Space, Spin, Typography, message } from "antd";
+import { Button, Input, Space, Spin, Typography, message } from "antd";
 import axios from "axios";
 import React, { useState } from "react";
+import ContentCard from "../../components/contentCard";
 import HomeButton from "../../components/homeButton";
 import {
   VITE_URL_SHORTENER,
@@ -71,14 +72,9 @@ function LinkShort() {
     <>
       <div className="centerized">
         <HomeButton />
-        <Card
-          title={
-            <>
-              <Typography.Title level={4}>Link Shortener</Typography.Title>
-              <Typography>Shortening URL for aesthetic look</Typography>
-            </>
-          }
-          className="card-app"
+        <ContentCard
+          title={"Link Shortener"}
+          description={"Shortening URL for aesthetic look"}
         >
           <Space direction="vertical" className="full-width">
             <Typography.Text>Input your link here</Typography.Text>
@@ -114,7 +110,7 @@ function LinkShort() {
               </>
             )}
           </Space>
-        </Card>
+        </ContentCard>
       </div>
     </>
   );

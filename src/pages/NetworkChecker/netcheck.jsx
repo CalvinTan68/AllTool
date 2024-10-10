@@ -1,7 +1,8 @@
 import { LoadingOutlined } from "@ant-design/icons";
-import { Button, Card, Descriptions, message, Spin, Typography } from "antd";
+import { Button, Descriptions, message, Spin, Typography } from "antd";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import ContentCard from "../../components/contentCard";
 import HomeButton from "../../components/homeButton";
 import { VITE_IP_DETAIL, VITE_IP_DETAIL_TOKEN } from "../../data/constants";
 
@@ -43,14 +44,9 @@ function NetCheck() {
     <>
       <div className="centerized">
         <HomeButton />
-        <Card
-          title={
-            <>
-              <Typography.Title level={4}>Network Checker</Typography.Title>
-              <Typography>Check your network information</Typography>
-            </>
-          }
-          className="card-app"
+        <ContentCard
+          title={"Network Checker"}
+          description={"Check your network information"}
         >
           <Descriptions column={1} layout="vertical" className="network-data">
             <Descriptions.Item label="IP Address">
@@ -91,6 +87,15 @@ function NetCheck() {
                 </>
               )}
             </Descriptions.Item>
+            <Descriptions.Item label="Hostname">
+              {loading ? (
+                <Spin indicator={loadingIcon} />
+              ) : (
+                <>
+                  <Typography.Text>{detail.hostname}</Typography.Text>
+                </>
+              )}
+            </Descriptions.Item>
           </Descriptions>
           <Button
             type="primary"
@@ -101,7 +106,7 @@ function NetCheck() {
           >
             Refresh Data
           </Button>
-        </Card>
+        </ContentCard>
       </div>
     </>
   );

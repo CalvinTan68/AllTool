@@ -1,7 +1,6 @@
 import { LoadingOutlined } from "@ant-design/icons";
 import {
   Button,
-  Card,
   Divider,
   InputNumber,
   Select,
@@ -12,6 +11,7 @@ import {
 } from "antd";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import ContentCard from "../../components/contentCard";
 import HomeButton from "../../components/homeButton";
 import { VITE_CURRENCY_CONVERTER } from "../../data/constants";
 import { data } from "../../data/currencies";
@@ -58,14 +58,9 @@ function CurrencyConverter() {
     <>
       <div className="centerized">
         <HomeButton />
-        <Card
-          title={
-            <>
-              <Typography.Title level={4}>Currency Converter</Typography.Title>
-              <Typography>Realtime currency converter</Typography>
-            </>
-          }
-          className="card-app"
+        <ContentCard
+          title={"Currency Converter"}
+          description={"Realtime currency converter"}
         >
           <Space direction="vertical" className="full-width">
             <Typography.Text>Currency Value</Typography.Text>
@@ -146,7 +141,7 @@ function CurrencyConverter() {
               </>
             )}
           </Typography.Title>
-        </Card>
+        </ContentCard>
       </div>
     </>
   );
