@@ -1,20 +1,78 @@
-// IMPORT BASE DATA
-@import "./styles/base/variables";
-@import "./styles/base/style";
-
-// IMPORT COMPONENT STYLES
-@import "./styles/components/buttons";
-@import "./styles/components/inputs";
-@import "./styles/components/cards";
-
-// IMPORT PAGE STYLES
-@import "./styles/pages/home";
-@import "./styles/pages/single";
-
 * {
   user-select: none;
 }
 
 body {
   overflow-y: hidden;
+}
+
+.mt-20 {
+  margin-top: 20px;
+}
+
+.b {
+  font-weight: bold;
+}
+
+.ant-btn {
+  &.back {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    border-radius: 9999px;
+  }
+  &.main-action {
+    border-radius: 9999px;
+    margin: 8px 0px !important;
+  }
+}
+
+.ant-card {
+  .ant-card-head-title,
+  .ant-card-body {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    article {
+      text-align: center;
+      margin: 0;
+    }
+  }
+  &.card-app {
+    width: 400px;
+  }
+  @media (max-width: 600px) {
+    &.card-app {
+      width: 90vw;
+    }
+  }
+}
+
+.ant-input-number {
+  .ant-input-number-handler-wrap {
+    display: none;
+  }
+}
+
+.home {
+  padding: 5% !important;
+}
+
+.centerized {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+
+  .network-data {
+    th.ant-descriptions-item {
+      padding: 0;
+    }
+  }
+
+  .full-width {
+    width: 100% !important;
+  }
 }
