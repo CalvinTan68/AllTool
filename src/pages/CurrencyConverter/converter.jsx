@@ -23,6 +23,7 @@ function CurrencyConverter() {
   const [baseValue, setBaseValue] = useState(1);
   const [targetValue, setTargetValue] = useState("");
   const [loading, setLoading] = useState(false);
+  const [lastUpdate, setLastUpdate] = useState("");
 
   function convert() {
     setLoading(true);
@@ -31,7 +32,9 @@ function CurrencyConverter() {
       .then((res) => {
         const currency = res.data.conversion_rate;
         const calculatedValue = (parseFloat(baseValue) * currency).toFixed(2);
+        const lastDataUpdate = res.data.time_last_update_utc;
         setTargetValue(calculatedValue);
+        setLastUpdate(lastDataUpdate);
         setLoading(false);
         message.success("Value converted");
       })
@@ -141,6 +144,16 @@ function CurrencyConverter() {
               </>
             )}
           </Typography.Title>
+          <Typography>
+            Last Update :{" "}
+            {lastUpdate
+              ? new Date(lastUpdate).toLocaleDateString("en-GB", {
+                  day: "2-digit",
+                  month: "2-digit",
+                  year: "numeric",
+                })
+              : "N/A"}
+          </Typography>
         </ContentCard>
       </div>
     </>

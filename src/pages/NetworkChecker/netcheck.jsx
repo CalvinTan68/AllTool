@@ -87,15 +87,6 @@ function NetCheck() {
                 </>
               )}
             </Descriptions.Item>
-            <Descriptions.Item label="Hostname">
-              {loading ? (
-                <Spin indicator={loadingIcon} />
-              ) : (
-                <>
-                  <Typography.Text>{detail.hostname}</Typography.Text>
-                </>
-              )}
-            </Descriptions.Item>
           </Descriptions>
           <Button
             type="primary"
