@@ -17,7 +17,7 @@ const routesList = pages.map((item) => {
   );
 });
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+ReactDOM.createRoot(document.getElementById("content")).render(
   <BrowserRouter>
     <Routes>
       <Route path="/" element={<Home />} />
