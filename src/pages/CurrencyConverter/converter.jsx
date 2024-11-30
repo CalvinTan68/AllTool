@@ -14,7 +14,7 @@ import React, { useEffect, useState } from "react";
 import ContentCard from "../../components/contentCard";
 import HomeButton from "../../components/homeButton";
 import { VITE_CURRENCY_CONVERTER } from "../../data/constants";
-import { data } from "../../data/currencies";
+import currencies from "../../data/currencies.json";
 
 function CurrencyConverter() {
   const { Option } = Select;
@@ -92,7 +92,7 @@ function CurrencyConverter() {
                   .includes(inputValue.toLowerCase())
               }
             >
-              {data.map((currency) => (
+              {currencies.map((currency) => (
                 <Option key={currency.number} value={currency.code}>
                   {currency.code} - {currency.name}
                 </Option>
@@ -113,7 +113,7 @@ function CurrencyConverter() {
                   .includes(inputValue.toLowerCase())
               }
             >
-              {data
+              {currencies
                 .filter((currency) => currency.code !== baseCurrency)
                 .map((currency) => (
                   <Option key={currency.number} value={currency.code}>
