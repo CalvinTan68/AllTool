@@ -86,6 +86,8 @@ function WhatsAppGenerator() {
               rows={3}
               placeholder="Enter your message (optional)"
               onChange={handleTextChange}
+              size="large"
+              autoSize={{ minRows: 5, maxRows: 5 }}
             />
             {!showGeneratedButtons ? (
               <Button
