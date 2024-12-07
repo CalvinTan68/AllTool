@@ -1,6 +1,6 @@
 export const VITE_URL_SHORTENER = import.meta.env.VITE_URL_SHORTENER;
 export const VITE_URL_SHORTENER_TOKEN = import.meta.env
-  .VITE_URL_SHORTENER_TOKEN;
+	.VITE_URL_SHORTENER_TOKEN;
 export const VITE_URL_SHORTENER_BK = import.meta.env.VITE_URL_SHORTENER_BK;
 
 export const VITE_IP_DETAIL = import.meta.env.VITE_IP_DETAIL;

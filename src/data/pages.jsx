@@ -1,59 +1,59 @@
 import {
-  LinkOutlined,
-  LockOutlined,
-  QrcodeOutlined,
-  TransactionOutlined,
-  WhatsAppOutlined,
-  WifiOutlined,
+	LinkOutlined,
+	LockOutlined,
+	QrcodeOutlined,
+	TransactionOutlined,
+	WhatsAppOutlined,
+	WifiOutlined,
 } from "@ant-design/icons";
 import { lazy } from "react";
 
 const PWGEN = lazy(() => import("../pages/PasswordGenerator/pwgen"));
 const LinkShort = lazy(() => import("../pages/LinkShortener/linkshort"));
 const NetCheck = lazy(() => import("../pages/NetworkChecker/netcheck"));
-const CurrencyConverter = lazy(() =>
-  import("../pages/CurrencyConverter/converter")
+const CurrencyConverter = lazy(
+	() => import("../pages/CurrencyConverter/converter"),
 );
-const WhatsAppGenerator = lazy(() =>
-  import("../pages/WhatsappGenerator/wagen")
+const WhatsAppGenerator = lazy(
+	() => import("../pages/WhatsappGenerator/wagen"),
 );
 const QRGenerator = lazy(() => import("../pages/QRGenerator/qrgen"));
 
 export const pages = [
-  {
-    link: "/password-generator",
-    label: "Password Generator",
-    page: <PWGEN />,
-    image: <LockOutlined />,
-  },
-  {
-    link: "/link-shortener",
-    label: "URL/Link Shortener",
-    page: <LinkShort />,
-    image: <LinkOutlined />,
-  },
-  {
-    link: "/network-checker",
-    label: "Network Checker",
-    page: <NetCheck />,
-    image: <WifiOutlined />,
-  },
-  {
-    link: "/currency-converter",
-    label: "Currency Converter",
-    page: <CurrencyConverter />,
-    image: <TransactionOutlined />,
-  },
-  {
-    link: "/whatsapp-generator",
-    label: "WhatsApp Generator",
-    page: <WhatsAppGenerator />,
-    image: <WhatsAppOutlined />,
-  },
-  {
-    link: "/qr-generator",
-    label: "QRCode Generator",
-    page: <QRGenerator />,
-    image: <QrcodeOutlined />,
-  },
+	{
+		link: "/password-generator",
+		label: "Password Generator",
+		page: <PWGEN />,
+		image: <LockOutlined />,
+	},
+	{
+		link: "/link-shortener",
+		label: "URL/Link Shortener",
+		page: <LinkShort />,
+		image: <LinkOutlined />,
+	},
+	{
+		link: "/network-checker",
+		label: "Network Checker",
+		page: <NetCheck />,
+		image: <WifiOutlined />,
+	},
+	{
+		link: "/currency-converter",
+		label: "Currency Converter",
+		page: <CurrencyConverter />,
+		image: <TransactionOutlined />,
+	},
+	{
+		link: "/whatsapp-generator",
+		label: "WhatsApp Generator",
+		page: <WhatsAppGenerator />,
+		image: <WhatsAppOutlined />,
+	},
+	{
+		link: "/qr-generator",
+		label: "QRCode Generator",
+		page: <QRGenerator />,
+		image: <QrcodeOutlined />,
+	},
 ];
