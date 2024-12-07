@@ -7,3 +7,7 @@ export const VITE_IP_DETAIL = import.meta.env.VITE_IP_DETAIL;
 export const VITE_IP_DETAIL_TOKEN = import.meta.env.VITE_IP_DETAIL_TOKEN;
 
 export const VITE_CURRENCY_CONVERTER = import.meta.env.VITE_CURRENCY_CONVERTER;
+
+export const VITE_WHATSAPP_GENERATOR = import.meta.env.VITE_WHATSAPP_GENERATOR;
+
+export const VITE_QR_GENERATOR = import.meta.env.VITE_QR_GENERATOR;

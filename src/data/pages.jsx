@@ -1,6 +1,7 @@
 import {
   LinkOutlined,
   LockOutlined,
+  QrcodeOutlined,
   TransactionOutlined,
   WhatsAppOutlined,
   WifiOutlined,
@@ -16,6 +17,7 @@ const CurrencyConverter = lazy(() =>
 const WhatsAppGenerator = lazy(() =>
   import("../pages/WhatsappGenerator/wagen")
 );
+const QRGenerator = lazy(() => import("../pages/QRGenerator/qrgen"));
 
 export const pages = [
   {
@@ -47,5 +49,11 @@ export const pages = [
     label: "WhatsApp Generator",
     page: <WhatsAppGenerator />,
     image: <WhatsAppOutlined />,
+  },
+  {
+    link: "/qr-generator",
+    label: "QRCode Generator",
+    page: <QRGenerator />,
+    image: <QrcodeOutlined />,
   },
 ];

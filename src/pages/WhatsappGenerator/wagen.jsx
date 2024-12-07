@@ -2,6 +2,7 @@ import { Button, Input, message, Space, Typography } from "antd";
 import React, { useState } from "react";
 import ContentCard from "../../components/contentCard";
 import HomeButton from "../../components/homeButton";
+import { VITE_WHATSAPP_GENERATOR } from "../../data/constants";
 
 function WhatsAppGenerator() {
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -41,7 +42,7 @@ function WhatsAppGenerator() {
       return;
     }
 
-    let whatsappLink = `https://wa.me/${phoneNumber}`;
+    let whatsappLink = `${VITE_WHATSAPP_GENERATOR}/${phoneNumber}`;
     if (textMessage) {
       const encodedText = encodeURIComponent(textMessage);
       whatsappLink += `?text=${encodedText}`;
