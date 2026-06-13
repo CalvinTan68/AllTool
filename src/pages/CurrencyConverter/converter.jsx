@@ -10,7 +10,7 @@ import {
     message,
 } from "antd";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import ContentCard from "../../components/contentCard";
 import HomeButton from "../../components/homeButton";
 import { VITE_CURRENCY_CONVERTER } from "../../data/constants";
@@ -25,27 +25,26 @@ function CurrencyConverter() {
     const [targetValue, setTargetValue] = useState("");
     const [loading, setLoading] = useState(false);
 
-    function convert() {
-        setLoading(true);
-        axios
-            .get(
-                `${VITE_CURRENCY_CONVERTER}/${baseCurrency}/${targetCurrency}/${baseValue}`
-            )
-            .then((res) => {
-                setTargetValue(res.data.conversion_result);
-                setLoading(false);
-                messageApi.success("Value converted");
-            })
-            .catch((error) => {
-                setLoading(false);
-                console.error(error);
-                messageApi.error("API Error / Data not specified");
-            });
-    }
+    async function convert() {
+        if (!baseValue || baseValue <= 0) {
+            messageApi.error("Please enter a valid amount");
+            return;
+        }
 
-    useEffect(() => {
-        convert();
-    }, [targetCurrency]);
+        setLoading(true);
+        try {
+            const res = await axios.get(
+                `${VITE_CURRENCY_CONVERTER}/${baseCurrency}/${targetCurrency}/${baseValue}`
+            );
+            setTargetValue(res.data.conversion_result);
+            messageApi.success("Value converted");
+        } catch (error) {
+            console.error(error);
+            messageApi.error("API Error / Data not specified");
+        } finally {
+            setLoading(false);
+        }
+    }
 
     const loadingIcon = (
         <LoadingOutlined
@@ -78,7 +77,6 @@ function CurrencyConverter() {
                             addonBefore={baseCurrency}
                             onPressEnter={convert}
                             size="large"
-                            className="full-width"
                         />
                         <Typography.Text>Base Currency</Typography.Text>
                         <Select
@@ -138,6 +136,7 @@ function CurrencyConverter() {
                             className="main-action"
                             onClick={convert}
                             block
+                            disabled={!baseValue || baseValue <= 0}
                         >
                             Convert
                         </Button>
@@ -146,11 +145,13 @@ function CurrencyConverter() {
                     <Typography.Title level={5} className="b">
                         {loading ? (
                             <Spin indicator={loadingIcon} />
-                        ) : (
+                        ) : targetValue ? (
                             <>
                                 {targetCurrency}{" "}
                                 {parseFloat(targetValue).toLocaleString()}
                             </>
+                        ) : (
+                            "No conversion yet"
                         )}
                     </Typography.Title>
                 </ContentCard>

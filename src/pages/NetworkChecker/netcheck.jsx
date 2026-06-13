@@ -11,28 +11,50 @@ function NetCheck() {
 
   const [detail, setDetail] = useState({});
 
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
 
-  function getNetworkDetails() {
+  async function getNetworkDetails() {
     setLoading(true);
-    axios
-      .get(VITE_IP_DETAIL + "?token=" + VITE_IP_DETAIL_TOKEN)
-      .then((res) => {
-        setLoading(false);
-        const ipdetail = res.data;
-        setDetail(ipdetail);
-        messageApi.success("Network data retrieved");
-      })
-      .catch((error) => {
-        console.error(error);
-        setLoading(false);
-        messageApi.error("Failed to retrieve network data");
-      });
+    try {
+      const res = await axios.get(VITE_IP_DETAIL + "?token=" + VITE_IP_DETAIL_TOKEN);
+      setDetail(res.data);
+      messageApi.success("Network data retrieved");
+    } catch (error) {
+      console.error(error);
+      messageApi.error("Failed to retrieve network data");
+    } finally {
+      setLoading(false);
+    }
   }
 
   useEffect(() => {
-    getNetworkDetails();
-  }, []);
+    let cancelled = false;
+
+    async function loadNetworkDetails() {
+      try {
+        const res = await axios.get(VITE_IP_DETAIL + "?token=" + VITE_IP_DETAIL_TOKEN);
+        if (!cancelled) {
+          setDetail(res.data);
+          messageApi.success("Network data retrieved");
+        }
+      } catch (error) {
+        console.error(error);
+        if (!cancelled) {
+          messageApi.error("Failed to retrieve network data");
+        }
+      } finally {
+        if (!cancelled) {
+          setLoading(false);
+        }
+      }
+    }
+
+    loadNetworkDetails();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [messageApi]);
 
   const loadingIcon = (
     <LoadingOutlined

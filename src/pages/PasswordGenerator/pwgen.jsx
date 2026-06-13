@@ -1,30 +1,44 @@
 import { Button, Checkbox, message, Slider, Space } from "antd";
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 import ContentCard from "../../components/contentCard";
 import HomeButton from "../../components/homeButton";
 
 function PWGEN() {
   const [messageApi, contextHolder] = message.useMessage();
   const [length, setLength] = useState(15);
-  const [password, setPassword] = useState("");
   const [useUppercase, setUseUppercase] = useState(true);
   const [useLowercase, setUseLowercase] = useState(true);
   const [useNumbers, setUseNumbers] = useState(true);
   const [useSymbols, setUseSymbols] = useState(true);
+  const [generation, setGeneration] = useState(0);
 
-  function generatePassword() {
+  const password = useMemo(() => {
+    void generation;
+
     let charset = "";
     if (useUppercase) charset += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     if (useLowercase) charset += "abcdefghijklmnopqrstuvwxyz";
     if (useNumbers) charset += "0123456789";
     if (useSymbols) charset += "~!@#$%^&*()_-+={[}]|:;<,>.?/";
 
+    if (!charset) return "";
+
+    const randomValues = new Uint32Array(length);
+    window.crypto.getRandomValues(randomValues);
+
     let password = "";
     for (let i = 0; i < length; i++) {
-      password += charset.charAt(Math.floor(Math.random() * charset.length));
+      password += charset.charAt(randomValues[i] % charset.length);
     }
-    setPassword(password);
-  }
+    return password;
+  }, [
+    length,
+    useUppercase,
+    useLowercase,
+    useNumbers,
+    useSymbols,
+    generation,
+  ]);
 
   function copyPassword() {
     if (password) {
@@ -32,10 +46,6 @@ function PWGEN() {
       messageApi.success("Password copied to clipboard");
     }
   }
-
-  useEffect(() => {
-    generatePassword();
-  }, [length, useUppercase, useLowercase, useNumbers, useSymbols]);
 
   const formatter = (value) => `Password Length : ${value} digit`;
 
@@ -104,8 +114,9 @@ function PWGEN() {
             size="large"
             title="generate"
             id="generate"
-            onClick={generatePassword}
+            onClick={() => setGeneration((value) => value + 1)}
             block
+            disabled={!password}
           >
             Generate Password
           </Button>

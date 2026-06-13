@@ -56,7 +56,7 @@ function WhatsAppGenerator() {
 
   function openInNewTab() {
     if (link) {
-      window.open(link, "_blank");
+      window.open(link, "_blank", "noopener,noreferrer");
     }
   }
 

@@ -12,23 +12,17 @@ function Home() {
         <Row gutter={[16, 16]}>
           {pages.map((item) => {
             return (
-              <>
-                <Col xs={12}>
-                  <Link to={item.link}>
-                    <Card
-                      hoverable={true}
-                      style={{ backgroundColor: "transparent" }}
-                    >
-                      <Typography.Title level={2}>
-                        {item.image}
-                      </Typography.Title>
-                      <Typography.Title level={5}>
-                        {item.label}
-                      </Typography.Title>
-                    </Card>
-                  </Link>
-                </Col>
-              </>
+              <Col xs={12} key={item.link}>
+                <Link to={item.link}>
+                  <Card
+                    hoverable={true}
+                    style={{ backgroundColor: "transparent" }}
+                  >
+                    <Typography.Title level={2}>{item.image}</Typography.Title>
+                    <Typography.Title level={5}>{item.label}</Typography.Title>
+                  </Card>
+                </Link>
+              </Col>
             );
           })}
         </Row>
