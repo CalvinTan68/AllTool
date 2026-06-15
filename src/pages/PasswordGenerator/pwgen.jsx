@@ -1,7 +1,12 @@
-import { Button, Checkbox, message, Slider, Space } from "antd";
+import { Button, Checkbox, Progress, Slider, Space, Typography, message } from "antd";
 import { useMemo, useState } from "react";
 import ContentCard from "../../components/contentCard";
 import HomeButton from "../../components/homeButton";
+import {
+  characterGroups,
+  getCharsetLengthFromOptions,
+  getStrengthDetails,
+} from "../../utils/passwordStrength";
 
 function PWGEN() {
   const [messageApi, contextHolder] = message.useMessage();
@@ -16,10 +21,10 @@ function PWGEN() {
     void generation;
 
     let charset = "";
-    if (useUppercase) charset += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    if (useLowercase) charset += "abcdefghijklmnopqrstuvwxyz";
-    if (useNumbers) charset += "0123456789";
-    if (useSymbols) charset += "~!@#$%^&*()_-+={[}]|:;<,>.?/";
+    if (useUppercase) charset += characterGroups.uppercase;
+    if (useLowercase) charset += characterGroups.lowercase;
+    if (useNumbers) charset += characterGroups.numbers;
+    if (useSymbols) charset += characterGroups.symbols;
 
     if (!charset) return "";
 
@@ -39,6 +44,20 @@ function PWGEN() {
     useSymbols,
     generation,
   ]);
+
+  const charsetLength = useMemo(() => {
+    return getCharsetLengthFromOptions({
+      useUppercase,
+      useLowercase,
+      useNumbers,
+      useSymbols,
+    });
+  }, [useUppercase, useLowercase, useNumbers, useSymbols]);
+
+  const strength = useMemo(
+    () => getStrengthDetails(length, charsetLength),
+    [charsetLength, length]
+  );
 
   function copyPassword() {
     if (password) {
@@ -67,6 +86,24 @@ function PWGEN() {
           >
             <span id="password">{password}</span>
           </Button>
+          <div className="password-strength">
+            <Space direction="vertical" className="full-width">
+              <div className="strength-summary">
+                <Typography.Text strong>{strength.label}</Typography.Text>
+                <Typography.Text type="secondary">
+                  {Math.round(strength.entropy)} bits
+                </Typography.Text>
+              </div>
+              <Progress
+                percent={strength.percent}
+                showInfo={false}
+                status={strength.status}
+              />
+              <Typography.Text type="secondary">
+                {strength.feedback}
+              </Typography.Text>
+            </Space>
+          </div>
 
           <Space
             direction="vertical"

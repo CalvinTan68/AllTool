@@ -138,6 +138,21 @@ body {
     width: 100%;
 }
 
+.password-strength {
+    margin-top: 12px;
+}
+
+.strength-summary {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.password-checks {
+    display: grid;
+    gap: 8px;
+}
+
 .text-stats,
 .tool-actions {
     display: flex;

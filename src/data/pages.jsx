@@ -3,6 +3,7 @@ import {
 	LockOutlined,
 	QrcodeOutlined,
 	FileTextOutlined,
+	SecurityScanOutlined,
 	TransactionOutlined,
 	WhatsAppOutlined,
 	WifiOutlined,
@@ -10,6 +11,7 @@ import {
 import { lazy } from "react";
 
 const PWGEN = lazy(() => import("../pages/PasswordGenerator/pwgen"));
+const PasswordChecker = lazy(() => import("../pages/PasswordChecker/pwcheck"));
 const LinkShort = lazy(() => import("../pages/LinkShortener/linkshort"));
 const NetCheck = lazy(() => import("../pages/NetworkChecker/netcheck"));
 const CurrencyConverter = lazy(
@@ -27,6 +29,12 @@ export const pages = [
 		label: "Password Generator",
 		page: <PWGEN />,
 		image: <LockOutlined />,
+	},
+	{
+		link: "/password-checker",
+		label: "Password Checker",
+		page: <PasswordChecker />,
+		image: <SecurityScanOutlined />,
 	},
 	{
 		link: "/link-shortener",
