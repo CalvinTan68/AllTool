@@ -1,19 +1,22 @@
-import { Suspense } from "react";
+import { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router";
 import "./main.scss";
-import Home from "./pages/Homepage/home";
 
 import CenterLoading from "./components/centerLoading";
-import { pages } from "./data/pages";
+import { routes } from "./data/routes";
 
-const routesList = pages.map((item) => {
+const Home = lazy(() => import("./pages/Homepage/home"));
+
+const routesList = routes.map(({ path, Component }) => {
     return (
         <Route
-            key={item.link}
-            path={item.link}
+            key={path}
+            path={path}
             element={
-                <Suspense fallback={<CenterLoading />}>{item.page}</Suspense>
+                <Suspense fallback={<CenterLoading />}>
+                    <Component />
+                </Suspense>
             }
         />
     );
@@ -22,7 +25,14 @@ const routesList = pages.map((item) => {
 ReactDOM.createRoot(document.getElementById("content")).render(
     <BrowserRouter>
         <Routes>
-            <Route path="/" element={<Home />} />
+            <Route
+                path="/"
+                element={
+                    <Suspense fallback={<CenterLoading />}>
+                        <Home />
+                    </Suspense>
+                }
+            />
             {routesList}
         </Routes>
     </BrowserRouter>

@@ -37,7 +37,7 @@ export default [
 		},
 	},
 	{
-		files: ["src/data/pages.jsx"],
+		files: ["src/data/pages.jsx", "src/data/routes.jsx", "src/main.jsx"],
 		rules: {
 			"react-refresh/only-export-components": "off",
 		},

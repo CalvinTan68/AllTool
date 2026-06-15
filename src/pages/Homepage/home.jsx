@@ -35,6 +35,8 @@ function Home() {
         {filteredPages.length ? (
           <Row gutter={[16, 16]}>
             {filteredPages.map((item) => {
+              const Icon = item.icon;
+
               return (
                 <Col xs={12} sm={8} md={6} key={item.link}>
                   <Link to={item.link}>
@@ -43,7 +45,7 @@ function Home() {
                       style={{ backgroundColor: "transparent" }}
                     >
                       <Typography.Title level={2}>
-                        {item.image}
+                        <Icon />
                       </Typography.Title>
                       <Typography.Title level={5}>
                         {item.label}
