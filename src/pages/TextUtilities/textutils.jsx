@@ -1,4 +1,4 @@
-import { Button, Input, Space, Typography, message } from "antd";
+import { Alert, Button, Input, Space, Typography, message } from "antd";
 import { useMemo, useState } from "react";
 import ContentCard from "../../components/contentCard";
 import HomeButton from "../../components/homeButton";
@@ -30,9 +30,27 @@ function removeDuplicateLines(value) {
     .join("\n");
 }
 
+function sortJsonKeys(value) {
+  if (Array.isArray(value)) {
+    return value.map((item) => sortJsonKeys(item));
+  }
+
+  if (value && typeof value === "object") {
+    return Object.keys(value)
+      .sort()
+      .reduce((result, key) => {
+        result[key] = sortJsonKeys(value[key]);
+        return result;
+      }, {});
+  }
+
+  return value;
+}
+
 function TextUtilities() {
   const [messageApi, contextHolder] = message.useMessage();
   const [text, setText] = useState("");
+  const [jsonError, setJsonError] = useState("");
 
   const stats = useMemo(() => {
     const trimmedText = text.trim();
@@ -49,6 +67,7 @@ function TextUtilities() {
 
   function updateText(nextText, successMessage) {
     setText(nextText);
+    setJsonError("");
     messageApi.success(successMessage);
   }
 
@@ -67,7 +86,62 @@ function TextUtilities() {
       updateText(JSON.stringify(JSON.parse(text), null, 2), "JSON formatted");
     } catch (error) {
       console.error(error);
+      setJsonError(error.message);
       messageApi.error("Invalid JSON");
+    }
+  }
+
+  function minifyJson() {
+    try {
+      updateText(JSON.stringify(JSON.parse(text)), "JSON minified");
+    } catch (error) {
+      console.error(error);
+      setJsonError(error.message);
+      messageApi.error("Invalid JSON");
+    }
+  }
+
+  function validateJson() {
+    try {
+      JSON.parse(text);
+      setJsonError("");
+      messageApi.success("Valid JSON");
+    } catch (error) {
+      console.error(error);
+      setJsonError(error.message);
+      messageApi.error("Invalid JSON");
+    }
+  }
+
+  function sortJsonObjectKeys() {
+    try {
+      const sorted = sortJsonKeys(JSON.parse(text));
+      updateText(JSON.stringify(sorted, null, 2), "JSON keys sorted");
+    } catch (error) {
+      console.error(error);
+      setJsonError(error.message);
+      messageApi.error("Invalid JSON");
+    }
+  }
+
+  function escapeJsonString() {
+    updateText(JSON.stringify(text), "JSON string escaped");
+  }
+
+  function unescapeJsonString() {
+    try {
+      const parsed = JSON.parse(text);
+
+      if (typeof parsed !== "string") {
+        messageApi.error("Escaped value must be a JSON string");
+        return;
+      }
+
+      updateText(parsed, "JSON string unescaped");
+    } catch (error) {
+      console.error(error);
+      setJsonError(error.message);
+      messageApi.error("Invalid escaped JSON string");
     }
   }
 
@@ -129,8 +203,24 @@ function TextUtilities() {
               >
                 Sort Lines
               </Button>
-              <Button onClick={formatJson}>Format JSON</Button>
               <Button onClick={copyText}>Copy</Button>
+            </div>
+            <Typography.Text strong>JSON Tools</Typography.Text>
+            {jsonError && (
+              <Alert
+                message="Invalid JSON"
+                description={jsonError}
+                type="error"
+                showIcon
+              />
+            )}
+            <div className="tool-actions">
+              <Button onClick={formatJson}>Format JSON</Button>
+              <Button onClick={minifyJson}>Minify JSON</Button>
+              <Button onClick={validateJson}>Validate JSON</Button>
+              <Button onClick={sortJsonObjectKeys}>Sort Keys</Button>
+              <Button onClick={escapeJsonString}>Escape String</Button>
+              <Button onClick={unescapeJsonString}>Unescape String</Button>
             </div>
             <Button
               className="main-action"
