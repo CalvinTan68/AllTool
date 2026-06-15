@@ -1,4 +1,5 @@
 import {
+	BgColorsOutlined,
 	CalculatorOutlined,
 	LinkOutlined,
 	LockOutlined,
@@ -24,6 +25,7 @@ const WhatsAppGenerator = lazy(
 const QRGenerator = lazy(() => import("../pages/QRGenerator/qrgen"));
 const TextUtilities = lazy(() => import("../pages/TextUtilities/textutils"));
 const UnitConverter = lazy(() => import("../pages/UnitConverter/unitconverter"));
+const ColorTools = lazy(() => import("../pages/ColorTools/colortools"));
 
 export const pages = [
 	{
@@ -61,6 +63,12 @@ export const pages = [
 		label: "Unit Converter",
 		page: <UnitConverter />,
 		image: <CalculatorOutlined />,
+	},
+	{
+		link: "/color-tools",
+		label: "Color Tools",
+		page: <ColorTools />,
+		image: <BgColorsOutlined />,
 	},
 	{
 		link: "/whatsapp-generator",

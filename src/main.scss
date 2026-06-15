@@ -158,6 +158,30 @@ body {
     text-align: center;
 }
 
+.color-preview {
+    border: 1px solid #d9d9d9;
+    border-radius: 8px;
+    height: 88px;
+    width: 100%;
+}
+
+.color-values {
+    display: grid;
+    gap: 8px;
+
+    .ant-btn {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+.contrast-preview {
+    border: 1px solid #d9d9d9;
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+}
+
 .text-stats,
 .tool-actions {
     display: flex;

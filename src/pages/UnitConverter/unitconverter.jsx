@@ -205,7 +205,7 @@ function UnitConverter() {
             <div className="converter-result">
               <Typography.Text type="secondary">Result</Typography.Text>
               <Typography.Title level={4}>
-                {formatResult(result) || "No result"}
+                {result === "" ? "No result" : formatResult(result)}
               </Typography.Title>
             </div>
             <Button
