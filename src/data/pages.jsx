@@ -1,4 +1,5 @@
 import {
+	CalculatorOutlined,
 	LinkOutlined,
 	LockOutlined,
 	QrcodeOutlined,
@@ -22,6 +23,7 @@ const WhatsAppGenerator = lazy(
 );
 const QRGenerator = lazy(() => import("../pages/QRGenerator/qrgen"));
 const TextUtilities = lazy(() => import("../pages/TextUtilities/textutils"));
+const UnitConverter = lazy(() => import("../pages/UnitConverter/unitconverter"));
 
 export const pages = [
 	{
@@ -53,6 +55,12 @@ export const pages = [
 		label: "Currency Converter",
 		page: <CurrencyConverter />,
 		image: <TransactionOutlined />,
+	},
+	{
+		link: "/unit-converter",
+		label: "Unit Converter",
+		page: <UnitConverter />,
+		image: <CalculatorOutlined />,
 	},
 	{
 		link: "/whatsapp-generator",
