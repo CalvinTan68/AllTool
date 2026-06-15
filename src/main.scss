@@ -5,8 +5,16 @@
     user-select: none;
 }
 
+input,
+textarea {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
 body {
-    overflow-y: hidden;
+    overflow-y: auto;
 }
 
 .mt-20 {
@@ -44,12 +52,7 @@ body {
         }
     }
     &.card-app {
-        width: 400px;
-    }
-    @media (max-width: 600px) {
-        &.card-app {
-            width: 90vw;
-        }
+        width: min(440px, calc(100vw - 32px));
     }
 }
 
@@ -86,6 +89,11 @@ body {
 
 .home {
     padding: 5% !important;
+
+    .home-search {
+        width: 100%;
+        margin-bottom: 20px;
+    }
 }
 
 .centerized {
@@ -98,7 +106,9 @@ body {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    height: 100vh;
+    box-sizing: border-box;
+    min-height: 100dvh;
+    padding: 24px 16px;
 
     .network-data {
         th.ant-descriptions-item {
@@ -111,12 +121,40 @@ body {
     }
 }
 
-.ant-input-number-actions {
-    display: none !important;
-}
-.ant-space-item {
-    width: 100% !important;
+.card-app .ant-space-vertical > .ant-space-item,
+.ant-space-vertical.full-width > .ant-space-item {
+    width: 100%;
+
     .ant-space-compact {
         width: 100%;
     }
+}
+
+.qr-preview {
+    display: flex;
+    justify-content: center;
+    margin-top: 8px;
+    overflow-x: auto;
+    width: 100%;
+}
+
+.text-stats,
+.tool-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.text-stats {
+    justify-content: space-between;
+}
+
+.tool-actions {
+    .ant-btn {
+        flex: 1 1 calc(50% - 8px);
+    }
+}
+
+.ant-input-number-actions {
+    display: none !important;
 }

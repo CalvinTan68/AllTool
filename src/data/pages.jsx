@@ -2,6 +2,7 @@ import {
 	LinkOutlined,
 	LockOutlined,
 	QrcodeOutlined,
+	FileTextOutlined,
 	TransactionOutlined,
 	WhatsAppOutlined,
 	WifiOutlined,
@@ -18,6 +19,7 @@ const WhatsAppGenerator = lazy(
 	() => import("../pages/WhatsappGenerator/wagen"),
 );
 const QRGenerator = lazy(() => import("../pages/QRGenerator/qrgen"));
+const TextUtilities = lazy(() => import("../pages/TextUtilities/textutils"));
 
 export const pages = [
 	{
@@ -55,5 +57,11 @@ export const pages = [
 		label: "QRCode Generator",
 		page: <QRGenerator />,
 		image: <QrcodeOutlined />,
+	},
+	{
+		link: "/text-utilities",
+		label: "Text Utilities",
+		page: <TextUtilities />,
+		image: <FileTextOutlined />,
 	},
 ];
