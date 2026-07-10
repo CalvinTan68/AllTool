@@ -34,9 +34,9 @@ function CurrencyConverter() {
         setLoading(true);
         try {
             const res = await axios.get(
-                `${VITE_CURRENCY_CONVERTER}/${baseCurrency}/${targetCurrency}/${baseValue}`
+                `${VITE_CURRENCY_CONVERTER}/${baseCurrency}/${targetCurrency}`,
             );
-            setTargetValue(res.data.conversion_result);
+            setTargetValue(res.data.rate * baseValue);
             messageApi.success("Value converted");
         } catch (error) {
             console.error(error);
@@ -119,7 +119,8 @@ function CurrencyConverter() {
                         >
                             {currencies
                                 .filter(
-                                    (currency) => currency.code !== baseCurrency
+                                    (currency) =>
+                                        currency.code !== baseCurrency,
                                 )
                                 .map((currency) => (
                                     <Option
