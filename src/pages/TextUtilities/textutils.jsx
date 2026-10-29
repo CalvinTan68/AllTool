@@ -172,26 +172,37 @@ function TextUtilities() {
             </div>
             <div className="tool-actions">
               <Button
-                onClick={() => updateText(text.toUpperCase(), "Uppercase applied")}
+                onClick={() =>
+                  updateText(text.toUpperCase(), "Uppercase applied")
+                }
               >
                 Uppercase
               </Button>
               <Button
-                onClick={() => updateText(text.toLowerCase(), "Lowercase applied")}
+                onClick={() =>
+                  updateText(text.toLowerCase(), "Lowercase applied")
+                }
               >
                 Lowercase
               </Button>
               <Button
-                onClick={() => updateText(toTitleCase(text), "Title case applied")}
+                onClick={() =>
+                  updateText(toTitleCase(text), "Title case applied")
+                }
               >
                 Title Case
               </Button>
-              <Button onClick={() => updateText(toSlug(text), "Slug generated")}>
+              <Button
+                onClick={() => updateText(toSlug(text), "Slug generated")}
+              >
                 Slug
               </Button>
               <Button
                 onClick={() =>
-                  updateText(removeDuplicateLines(text), "Duplicate lines removed")
+                  updateText(
+                    removeDuplicateLines(text),
+                    "Duplicate lines removed",
+                  )
                 }
               >
                 Unique Lines

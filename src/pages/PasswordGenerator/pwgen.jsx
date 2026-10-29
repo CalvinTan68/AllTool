@@ -1,4 +1,12 @@
-import { Button, Checkbox, Progress, Slider, Space, Typography, message } from "antd";
+import {
+  Button,
+  Checkbox,
+  Progress,
+  Slider,
+  Space,
+  Typography,
+  message,
+} from "antd";
 import { useMemo, useState } from "react";
 import ContentCard from "../../components/contentCard";
 import HomeButton from "../../components/homeButton";
@@ -36,14 +44,7 @@ function PWGEN() {
       password += charset.charAt(randomValues[i] % charset.length);
     }
     return password;
-  }, [
-    length,
-    useUppercase,
-    useLowercase,
-    useNumbers,
-    useSymbols,
-    generation,
-  ]);
+  }, [length, useUppercase, useLowercase, useNumbers, useSymbols, generation]);
 
   const charsetLength = useMemo(() => {
     return getCharsetLengthFromOptions({
@@ -56,7 +57,7 @@ function PWGEN() {
 
   const strength = useMemo(
     () => getStrengthDetails(length, charsetLength),
-    [charsetLength, length]
+    [charsetLength, length],
   );
 
   function copyPassword() {

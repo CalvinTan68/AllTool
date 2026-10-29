@@ -13,7 +13,7 @@ function Home() {
     if (!normalizedSearch) return pages;
 
     return pages.filter((item) =>
-      item.label.toLowerCase().includes(normalizedSearch)
+      item.label.toLowerCase().includes(normalizedSearch),
     );
   }, [search]);
 

@@ -16,7 +16,9 @@ function NetCheck() {
   async function getNetworkDetails() {
     setLoading(true);
     try {
-      const res = await axios.get(VITE_IP_DETAIL + "?token=" + VITE_IP_DETAIL_TOKEN);
+      const res = await axios.get(
+        VITE_IP_DETAIL + "?token=" + VITE_IP_DETAIL_TOKEN,
+      );
       setDetail(res.data);
       messageApi.success("Network data retrieved");
     } catch (error) {
@@ -32,7 +34,9 @@ function NetCheck() {
 
     async function loadNetworkDetails() {
       try {
-        const res = await axios.get(VITE_IP_DETAIL + "?token=" + VITE_IP_DETAIL_TOKEN);
+        const res = await axios.get(
+          VITE_IP_DETAIL + "?token=" + VITE_IP_DETAIL_TOKEN,
+        );
         if (!cancelled) {
           setDetail(res.data);
           messageApi.success("Network data retrieved");

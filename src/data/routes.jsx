@@ -1,16 +1,20 @@
 import { lazy } from "react";
 
-const PasswordGenerator = lazy(() => import("../pages/PasswordGenerator/pwgen"));
+const PasswordGenerator = lazy(
+  () => import("../pages/PasswordGenerator/pwgen"),
+);
 const PasswordChecker = lazy(() => import("../pages/PasswordChecker/pwcheck"));
 const LinkShortener = lazy(() => import("../pages/LinkShortener/linkshort"));
 const NetworkChecker = lazy(() => import("../pages/NetworkChecker/netcheck"));
 const CurrencyConverter = lazy(
-  () => import("../pages/CurrencyConverter/converter")
+  () => import("../pages/CurrencyConverter/converter"),
 );
-const UnitConverter = lazy(() => import("../pages/UnitConverter/unitconverter"));
+const UnitConverter = lazy(
+  () => import("../pages/UnitConverter/unitconverter"),
+);
 const ColorTools = lazy(() => import("../pages/ColorTools/colortools"));
 const WhatsAppGenerator = lazy(
-  () => import("../pages/WhatsappGenerator/wagen")
+  () => import("../pages/WhatsappGenerator/wagen"),
 );
 const QRGenerator = lazy(() => import("../pages/QRGenerator/qrgen"));
 const TextUtilities = lazy(() => import("../pages/TextUtilities/textutils"));

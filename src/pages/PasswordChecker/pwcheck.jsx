@@ -21,7 +21,7 @@ function PasswordChecker() {
   const strength = useMemo(() => {
     return getStrengthDetails(
       password.length,
-      getCharsetLengthFromPassword(password)
+      getCharsetLengthFromPassword(password),
     );
   }, [password]);
 

@@ -40,7 +40,9 @@ function clamp(value, min, max) {
 
 function rgbToHex({ r, g, b, a = 1 }) {
   const hex = [r, g, b]
-    .map((value) => clamp(Math.round(value), 0, 255).toString(16).padStart(2, "0"))
+    .map((value) =>
+      clamp(Math.round(value), 0, 255).toString(16).padStart(2, "0"),
+    )
     .join("")
     .toUpperCase();
 
@@ -251,7 +253,10 @@ function ColorTools() {
       {contextHolder}
       <div className="centerized">
         <HomeButton />
-        <ContentCard title={"Color Tools"} description={"Convert and check colors"}>
+        <ContentCard
+          title={"Color Tools"}
+          description={"Convert and check colors"}
+        >
           <Space direction="vertical" className="full-width">
             <Typography.Text>Color</Typography.Text>
             <Input
@@ -267,7 +272,9 @@ function ColorTools() {
                   style={{ backgroundColor: color.hex }}
                 />
                 <div className="color-values">
-                  <Button onClick={() => copyValue(color.hex)}>{color.hex}</Button>
+                  <Button onClick={() => copyValue(color.hex)}>
+                    {color.hex}
+                  </Button>
                   <Button onClick={() => copyValue(color.rgbText)}>
                     {color.rgbText}
                   </Button>
@@ -303,7 +310,9 @@ function ColorTools() {
                 )}
               </>
             ) : (
-              <Typography.Text type="danger">Invalid color value</Typography.Text>
+              <Typography.Text type="danger">
+                Invalid color value
+              </Typography.Text>
             )}
           </Space>
         </ContentCard>

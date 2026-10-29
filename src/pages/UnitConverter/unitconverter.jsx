@@ -1,12 +1,5 @@
 import { SwapOutlined } from "@ant-design/icons";
-import {
-  Button,
-  InputNumber,
-  Select,
-  Space,
-  Typography,
-  message,
-} from "antd";
+import { Button, InputNumber, Select, Space, Typography, message } from "antd";
 import { useMemo, useState } from "react";
 import ContentCard from "../../components/contentCard";
 import HomeButton from "../../components/homeButton";
@@ -92,7 +85,8 @@ function fromCelsius(value, unit) {
 }
 
 function convertValue(categoryKey, amount, fromUnit, toUnit) {
-  if (amount === null || amount === undefined || Number.isNaN(amount)) return "";
+  if (amount === null || amount === undefined || Number.isNaN(amount))
+    return "";
 
   if (categoryKey === "temperature") {
     return fromCelsius(toCelsius(amount, fromUnit), toUnit);
@@ -134,7 +128,7 @@ function UnitConverter() {
       ([value, config]) => ({
         label: config.label,
         value,
-      })
+      }),
     );
   }, [category]);
 
@@ -166,7 +160,10 @@ function UnitConverter() {
       {contextHolder}
       <div className="centerized">
         <HomeButton />
-        <ContentCard title={"Unit Converter"} description={"Convert common units"}>
+        <ContentCard
+          title={"Unit Converter"}
+          description={"Convert common units"}
+        >
           <Space direction="vertical" className="full-width">
             <Typography.Text>Category</Typography.Text>
             <Select

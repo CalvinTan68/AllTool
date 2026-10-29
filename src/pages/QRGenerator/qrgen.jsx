@@ -63,7 +63,10 @@ function QRGenerator() {
       {contextHolder}
       <div className="centerized">
         <HomeButton />
-        <ContentCard title={"QRCode Generator"} description={"Generate QR Code"}>
+        <ContentCard
+          title={"QRCode Generator"}
+          description={"Generate QR Code"}
+        >
           <Space direction="vertical" className="full-width">
             <Input.TextArea
               value={inputText}

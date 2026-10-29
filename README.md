@@ -6,11 +6,13 @@ This is a all-in-one online tool that you need. It has a random password generat
 
 1. Clone the project to your local
 2. Run this command
+
    ```
    npm install
    ```
 3. Rename `.env.example` file to be `.env` and configure the contents
 4. Run this command to start the project
+
    ```
    npm run dev
    ```
