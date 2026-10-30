@@ -1,32 +1,33 @@
 {
-  "name": "AllTool",
-  "private": true,
-  "version": "1.0.0",
-  "type": "module",
-  "scripts": {
-    "dev": "vite",
-    "build": "vite build",
-    "lint": "biome format .",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "antd": "^6",
-    "axios": "^1",
-    "react": "^19",
-    "react-dom": "^19",
-    "react-router": "^8.5.0",
-    "sass": "^1"
-  },
-  "devDependencies": {
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
-    "@biomejs/biome": "^2.6.4",
-    "@vitejs/plugin-react-swc": "^4.3.3",
-    "vite": "^8"
-  },
-  "allowScripts": {
-    "fsevents@2.3.3": true,
-    "@parcel/watcher@2.6.0": true,
-    "@swc/core@1.16.20": true
-  }
+    "name": "AllTool",
+    "private": true,
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "lint": "biome format .",
+        "preview": "vite preview"
+    },
+    "dependencies": {
+        "@tanstack/redact": "^0.2.3",
+        "antd": "^6",
+        "axios": "^1",
+        "react": "^19",
+        "react-dom": "^19",
+        "react-router": "^8.5.0",
+        "sass": "^1"
+    },
+    "devDependencies": {
+        "@biomejs/biome": "^2.6.4",
+        "@types/react": "^19",
+        "@types/react-dom": "^19",
+        "@vitejs/plugin-react-swc": "^4.3.3",
+        "vite": "^8"
+    },
+    "allowScripts": {
+        "fsevents@2.3.3": true,
+        "@parcel/watcher@2.6.0": true,
+        "@swc/core@1.16.20": true
+    }
 }
